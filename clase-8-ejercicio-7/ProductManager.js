@@ -184,8 +184,6 @@ class ProductManager{
         }
     }
 
-    // para probar si cambia además de borrar la carpeta de clase-9
-
 }
 
 module.exports = ProductManager;
