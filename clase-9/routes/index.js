@@ -17,7 +17,7 @@ function routerAPI(app){
 
 
     /* 
-    CHAT GPT
+    CHAT GPT SOBRE ENDPOINTS
         En el contexto de APIs (Interfaces de Programación de Aplicaciones), un endpoint es una dirección o URL específica en un servidor donde se puede acceder a un recurso o servicio. Los endpoints permiten a los clientes (como navegadores web, aplicaciones móviles, etc.) interactuar con el servidor a través de solicitudes HTTP (como GET, POST, PUT, DELETE).
 
         Por ejemplo, si tienes una API que gestiona productos, algunos endpoints típicos podrían ser:
@@ -26,6 +26,9 @@ function routerAPI(app){
         PUT /products/:id: para actualizar un producto existente.
         DELETE /products/:id: para eliminar un producto.
         En tu código, al definir los endpoints en routerAPI, estarías indicando qué rutas maneja tu aplicación y qué lógica se ejecuta cuando un cliente hace una solicitud a esas rutas.
+
+
+        https://chatgpt.com/share/3bb3742b-fd83-4200-a28d-9b9406079120 -> buscar 'Qué significa endPoints'
     */
 }
 
