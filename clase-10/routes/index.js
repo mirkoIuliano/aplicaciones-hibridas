@@ -6,6 +6,13 @@ const usersRouter = require('./users-router');
 
 // defino la función de la aplicación de entrada
 function routerAPI(app){
+    // Verifica que `app` se pase correctamente aquí
+    if (!app || typeof app.use !== 'function') {
+        throw new TypeError('La aplicación Express (app) no está definida correctamente.');
+    }
+
+
+
     // definimos los endPoints
     app.use('/users', usersRouter);
     // lo que está ocurriendo acá es lo siguiente: cada vez que entre a la ruta users todas las solicitudes las va a estar administrando esta función
@@ -33,4 +40,4 @@ function routerAPI(app){
 }
 
 // Exportamos la función
-module.exports = routerAPI();
+module.exports = routerAPI;
