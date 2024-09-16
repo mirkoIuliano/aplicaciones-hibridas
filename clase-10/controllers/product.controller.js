@@ -19,12 +19,11 @@ async function getProducts (request, response) {
 
 async function getProductById (request, response) {
     try {
-        // con los ':' definimos los parámetros
         // console.log(request) ESTE CONSOLE.LOG ME SIRVE PARA VER QUE DENTRO DEL OBJETO REQUEST ESTÁ 'params' QUE ES DONDE ESTÁN LOS ID
         const id = request.params.id;
         const productoId = await manager.getProductById(id);
         if (!productoId){
-            return response.status(404).send('Prodcto no encontrado');
+            return response.status(404).send('Producto no encontrado');
             // con el .status() definimos el estado de la respuesta. 404 significa 'Not found' y es por eso que lo uso acá
         }
         response.status(200).json(productoId);
@@ -67,7 +66,7 @@ async function addProduct (request, response) {
         
         // si está todo correcto entonces se agrega el prodcuto
         await manager.addProduct(newProduct);
-        response.status(200).json({mensaje : 'Prodcuto nuevo agregado'}) // esto es el mensaje que se le va a enviar al cliente y que se imprime en la página (es como el response.send de antes). En este caso nos sirve para avisar que se guardó el json que mandó
+        response.status(200).json({mensaje : 'Producto nuevo agregado'}) // esto es el mensaje que se le va a enviar al cliente y que se imprime en la página (es como el response.send de antes). En este caso nos sirve para avisar que se guardó el json que mandó
         
         } catch (error) {
             console.error(error);

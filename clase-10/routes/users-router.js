@@ -1,34 +1,36 @@
-// En clase 9 este archivo lo creó para que veamos cómo sería el Principio de Responabilidad Única aplicado en las rutas
+// En clase 9 este archivo lo creó para que veamos cómo sería el Principio de Responabilidad Única aplicado en las rutas. Aquí vamos a definir las rutas y asociarlas con una función del controlador
 
 const express = require('express');
 const router = express.Router();
 
-// Defino las rutas
+// clase 10 importamos el controlador de productos (sus funciones)
+const { getUsers, getUserById, addUser, updateUser, deleteUser } = require('../controllers/user.controller');
 
-// Defino la ruta para obtener todos los usuarios 
-router.get('/', (req, res) => {
-    console.log('GET Users')
-})
 
-// Defino la ruta para obtener usuario por id 
-router.get('/:id', (req, res) => {
-    console.log('GET Users by ID')
-})
 
-// Defino la ruta para crear usuario 
-router.post('/', (req, res) => {
-    console.log('POST Users')
-})
+// Defino la ruta para obtener todos los productos y la asocio con la función getUsers del controlador
+router.get('/', getUsers)
 
-// Defino la ruta para actualizar usuario 
-router.put('/:id', (req, res) => {
-    console.log('PUT Users')
-})
 
-// Defino la ruta para eliminar usuario 
-router.delete('/:id', (req, res) => {
-    console.log('DELETE Users')
-})
+
+// Defino la ruta para obtener productos por id y la asocio con la función getUserById del controlador
+router.get('/:id', getUserById)
+
+
+
+// Defino la ruta para crear productos y la asocio con la función addUser del controlador
+router.post('/', addUser)
+
+
+
+// Defino la ruta para actualizar productos y la asocio con la función updateUser del controlador
+router.put('/:id', updateUser)
+
+
+
+// Defino la ruta para eliminar productos y la asocio con la función deleteUser del controlador
+router.delete('/:id', deleteUser)
+
 
 
 module.exports = router;
