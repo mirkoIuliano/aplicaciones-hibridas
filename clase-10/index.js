@@ -5,7 +5,7 @@ const app = express(); // crea una instancia de una aplicación Express. Esto te
 const port = 3000; 
 
 // importamos las rutas
-const routerAPI = require('./routes');ñ
+const routerAPI = require('./routes');
     /* 
     esto es lo mismo que poner así:
     const routerAPI = require('./routes/index');
