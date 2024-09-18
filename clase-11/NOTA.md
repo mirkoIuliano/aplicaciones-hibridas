@@ -1,0 +1,1 @@
+el archivo de la carpeta products.json de la carpeta /data debería usarlo en el modelo ProductManager. Pero como el profe dijo que ya la clase que viene no vamos a tener más esa carpeta lo dejo por ahora así y que siga funcionando con el data.json de la carpeta raíz 
