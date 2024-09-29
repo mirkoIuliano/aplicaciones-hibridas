@@ -1,38 +1,18 @@
-<<<<<<< HEAD
 const usersRouter = require ('../routes/user-router');
 
-=======
-// Este index se va a encargar de llamar a los otros archivos. Cuando llamemos a routes este archivo index se va a encargar de adminstrar las rutas
-
-// primero tenemos que importar las rutas
-const productsRouter = require('./products-router');
-const usersRouter = require('./users-router');
-
-// defino la función de la aplicación de entrada
->>>>>>> origin/master
 function routerAPI(app){
     // Verifica que `app` se pase correctamente aquí
     if (!app || typeof app.use !== 'function') {
         throw new TypeError('La aplicación Express (app) no está definida correctamente.');
     }
 
-<<<<<<< HEAD
     // Acá vamos definiendo los endPoints
-=======
-
-
->>>>>>> origin/master
     // definimos los endPoints
     app.use('/users', usersRouter);
     // lo que está ocurriendo acá es lo siguiente: cada vez que entre a la ruta users todas las solicitudes las va a estar administrando esta función
     // es como hacer un redireccionamiento
     // cada vez que hacemos un /users/LO-QUE-SEA entra acá y va a invocar a la función userRouter
 
-<<<<<<< HEAD
-=======
-    app.use('/products', productsRouter);
-    // cada vez que hacemos un /products/LO-QUE-SEA entra acá y va a invocar a la función productsRouter
->>>>>>> origin/master
 
 
     /* 
@@ -51,9 +31,5 @@ function routerAPI(app){
     */
 }
 
-<<<<<<< HEAD
 // exportamos la función routerAPI
-=======
-// Exportamos la función
->>>>>>> origin/master
 module.exports = routerAPI;
