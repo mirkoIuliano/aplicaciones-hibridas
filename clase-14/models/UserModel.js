@@ -14,12 +14,17 @@ const mySchema = new Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true // unique lo qie hace es validar en la BD que no existe ninguna clave es única
     },
     password: {
         type: String,
         required: true
     },
+    created_at: {
+        type: Date,
+        default: Date.now // acá obtenemos la fecha y hora actual
+    }
 });
 
 // haciendo esto anterior recién creamos el esquema

@@ -19,25 +19,8 @@ const routerAPI = require('./routes/index');
 express cuando importamos la carpeta con varios archivos y no específicamos, automáticamente importa el index
 */
 
-/*------- ESTO ES PARA CONECTARNOS A LA BD. DEBERÍA IR EN OTRO ARCHIVO APARTE (LO VAMOS A HACER EN OTRA CLASE ESTO) -------*/
-// importamos mongoose
-const mongoose = require('mongoose');
-
-// nos conectamos a la base de datos
-mongoose.connect('mongodb://localhost:27017/app')
-// recibe como parámetros la cadena de conexión de la base de datos, que conseguimos de MongoDB Compass al crear una nueva conexión
-// el '/app' lo agregamos nosotros
-
-const db = mongoose.connection;
-
-db.on('error', () => { console.error('Error') });
-// 'on' es como el eventListener  
-
-// en caso de que se conecte correctamente va a decir esto
-db.once('open', () => {
-    console.log('Conexión correcta');
-})
-/*------- FIN DE LAS LÍNEAS DE CÓDIGO PARA CONECTAR A LA BD -------*/
+/*------- NOS CONECTARNOS A LA BD  -------*/
+const db = require('./config/dataBase.js') // importamos la variable con la conexión a la bd del archivo dataBase.js
 
 
 // importamos express
