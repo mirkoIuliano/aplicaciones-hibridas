@@ -1,0 +1,22 @@
+[
+  {
+    "id": "df9cc119-c70a-40f4-abac-5ebb267a0507",
+    "name": "Matias",
+    "email": "matias@mail.com"
+  },
+  {
+    "id": "556b89cf-a5a9-495c-9316-3eaf85932d9a",
+    "name": "Simon",
+    "email": "simon@mail.com"
+  },
+  {
+    "id": "a494520b-1f22-4c24-8026-2a4a8926c5ba",
+    "name": "José",
+    "email": "jose@mail.com"
+  },
+  {
+    "id": "6e641a73-27d5-4b84-b9ec-7c128ffe804f",
+    "name": "Mirko",
+    "email": "mirko@mail.com"
+  }
+]
