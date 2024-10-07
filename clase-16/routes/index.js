@@ -1,4 +1,5 @@
 const usersRouter = require ('./users-router');
+const tasksRouter = require ('./tasks-router');
 
 function routerAPI(app){
     // Verifica que `app` se pase correctamente aquí
@@ -29,6 +30,9 @@ function routerAPI(app){
 
         https://chatgpt.com/share/3bb3742b-fd83-4200-a28d-9b9406079120 -> buscar 'Qué significa endPoints'
     */
+
+    // definimos en endPoint para tareas 
+    app.use('/api/tasks', tasksRouter)
 }
 
 // exportamos la función routerAPI

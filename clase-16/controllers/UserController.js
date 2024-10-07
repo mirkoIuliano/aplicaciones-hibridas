@@ -41,7 +41,7 @@ const getUsers = async (req, res) => {
 }
 
 // Función para crear usuario
-const creatUser = async (req, res) => { 
+const createUser = async (req, res) => { 
     try {
     // desetrcutramos req.body y creamos un objeto con el contenido que tiene body
     const { name, email, password } = req.body; // extraemos del body el name, el email y el password
@@ -131,11 +131,29 @@ const updateUserById = async (req, res) => {
         const id  = req.params.id;
         const { name, email, password} = req.body;
         const userById = await User.findById(id); // esto yo lo hice para poder hacer la validación de si existe o no el id que se buscó
+
+
+        /* MIRKO, ESTO LO ESCRIBIS EL DIA 6-10 VIENDO LA CLASE 16: HACE FALTA QUE ENCRIPTE LA CONTRASEÑA DE NUEVO. ESTO QUE HICE AHORA LA HASHEA DE NUEVO SIEMPRE, PERO ESTARÍA BUENO QUE SOLO LA HASHEE SI LA CONTRASEÑA NO ES LA MISMA  */
+
+        // primero comparo si la contraseña nueva es igual a la vieja
+        const passwordValue = await bcrypt.compare(password, userById.password)
+        
+        /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
     /*------- DEBERÍA HACER MÁS VALIDACIONES DE QUE NO SE ENVÍEN DATOS DE MÁS, DE QUE ESTÉN TODOS, ETC -------*/
-    if (userById) {
-        // con findByIdAndUpdate busca por id y lo actualiza
-        await User.findByIdAndUpdate(id, {name, email, password}, {new:true}); /* como parémtros PRIMERO pasamos el id que tiene que buscar, SEGUNDO el objeto de actaulización, que contiene los campos y valores que quiero actualizar en el documento que estoy buscando, y el TERCER parámetro { new: true } se utiliza para indicar que quiero que el método devuelva el documento actualizado en lugar del documento original antes de la actualización */
-        res.status(200).json({mensaje: `Se actualizó el usuario con id ${id} correctamente`, datos_viejos_del_usuario: userById, datos_actualizados: {name, email, password} })
+    
+    if (userById) { // si existe el usuario con ese id entro
+        if (!passwordValue){ // si la contraseña es la misma
+            // hasheo la nueva password 
+            const passwordHash = await bcrypt.hash(password, salt)
+            // actualizo con la password nueva encriptada
+            await User.findByIdAndUpdate(id, {name, email, password: passwordHash}, {new:true});
+            res.status(200).json({mensaje: `Se actualizaron los datos y la contraseña del usuario con id ${id} correctamente`, datos_viejos_del_usuario: userById, datos_actualizados: {name, email, password: passwordHash} })
+        } else {
+            // con findByIdAndUpdate busca por id y lo actualiza
+            await User.findByIdAndUpdate(id, {name, email, password: userById.password}, {new:true}); /* como parémtros PRIMERO pasamos el id que tiene que buscar, SEGUNDO el objeto de actaulización, que contiene los campos y valores que quiero actualizar en el documento que estoy buscando, y el TERCER parámetro { new: true } se utiliza para indicar que quiero que el método devuelva el documento actualizado en lugar del documento original antes de la actualización */
+            res.status(200).json({mensaje: `Se actualizaron los datos excepto la contraseña con id ${id} correctamente`, datos_viejos_del_usuario: userById, datos_actualizados: {name, email, password: userById.password} })
+        }
     } else {
         res.status(404).json({mensaje: `No se encontró el usuario con el id ${id}`})
         return
@@ -145,6 +163,9 @@ const updateUserById = async (req, res) => {
         response.status(500).json( { mensaje: `Ocurrió un error al intentar actualizar los datos del usuario con el id ${id}` } );
     }
 }
+
+
+
 
 // creamos una función para que el usuario se loguee
 const login = async (req, res) => {
@@ -195,4 +216,46 @@ const login = async (req, res) => {
 
 
 // exportamos las funciones
-module.exports = {getUsers, creatUser, getUserById, deleteUserById, updateUserById, login}
+module.exports = {getUsers, createUser, getUserById, deleteUserById, updateUserById, login}
+
+
+
+/*-------- Esto es el intento que tuve de hacer el updateUserId hasheando la contraseña --------*/
+/* BORRAR ESTE
+// creamos una función para actualizar datos de un usuario
+const updateUserById = async (req, res) => {
+    try {
+        const id  = req.params.id;
+        const { name, email, password} = req.body;
+        const userById = await User.findById(id); // esto yo lo hice para poder hacer la validación de si existe o no el id que se buscó
+
+        console.log(userById.password)
+        console.log(password)
+        
+        /* MIRKO, ESTO LO ESCRIBIS EL DIA 6-10 VIENDO LA CLASE 16: HACE FALTA QUE ENCRIPTE LA CONTRASEÑA DE NUEVO */
+        /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+    /*------- DEBERÍA HACER MÁS VALIDACIONES DE QUE NO SE ENVÍEN DATOS DE MÁS, DE QUE ESTÉN TODOS, ETC -------*/
+/* BORRAR ESTE
+    if (userById) {
+        if(password !== userById.password){
+            // hasheo la nueva password HASTA ACA FUNCIONA
+            const passwordHash = await bcrypt.hash(password, salt)
+            // con findByIdAndUpdate busca por id y lo actualiza
+            await User.findByIdAndUpdate(id, {name, email, password: passwordHash}, {new:true});
+            res.status(200).json({mensaje: `Se actualizó el usuario con id ${id} correctamente`, datos_viejos_del_usuario: userById, datos_actualizados: {name, email, password: passwordHash} })
+        } else {
+            // con findByIdAndUpdate busca por id y lo actualiza
+            await User.findByIdAndUpdate(id, {name, email, password}, {new:true}); /* como parémtros PRIMERO pasamos el id que tiene que buscar, SEGUNDO el objeto de actaulización, que contiene los campos y valores que quiero actualizar en el documento que estoy buscando, y el TERCER parámetro { new: true } se utiliza para indicar que quiero que el método devuelva el documento actualizado en lugar del documento original antes de la actualización */
+/* BORRAR ESTE
+            res.status(200).json({mensaje: `Se actualizó el usuario con id ${id} correctamente`, datos_viejos_del_usuario: userById, datos_actualizados: {name, email, password} })
+        }
+    } else {
+        res.status(404).json({mensaje: `No se encontró el usuario con el id ${id}`})
+        return
+    }
+    } catch (error) {
+        console.error(error)
+        response.status(500).json( { mensaje: `Ocurrió un error al intentar actualizar los datos del usuario con el id ${id}` } );
+    }
+}
+BORRAR ESTE    */
