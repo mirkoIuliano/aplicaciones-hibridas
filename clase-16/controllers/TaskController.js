@@ -21,7 +21,7 @@ const getTasks = async (req, res) => {
         res.status(200).json({mensaje: "Se trajo el listado de tareas de manera correcta", tareas:tasks})
     } catch (error){
         console.error(error)
-        response.status(500).json( { mensaje: 'Ocurrió un error al buscar los tareas', error: error } );
+        res.status(500).json( { mensaje: 'Ocurrió un error al buscar los tareas', error: error } );
     }
 }
 
@@ -52,7 +52,7 @@ const createTask = async (req, res) => {
     res.status(200).json({mensaje: 'Tarea nueva creada exitosamente', tarea_nueva: newTask})
 } catch (error){
     console.error(error)
-    response.status(500).json( { mensaje: 'Ocurrió un error al crear la tarea' } );
+    res.status(500).json( { mensaje: 'Ocurrió un error al crear la tarea' } );
 }
 }
 
@@ -84,7 +84,7 @@ const getTasksByUserId = async (req, res) => {
     
 } catch (error) {
     console.error(error)
-    response.status(500).json( { mensaje: `Ocurrió un error al buscar usuario con el id ${id}`, error: {} } );
+    res.status(500).json( { mensaje: `Ocurrió un error al buscar usuario con el id ${id}`, error: {} } );
 }
 }
 
@@ -107,7 +107,7 @@ const deleteTaskById = async (req, res) => {
     
 } catch (error) {
     console.error(error)
-    response.status(500).json({mensaje: `Ocurrió un error al intentar eliminar la tarea con el id ${id}`});
+    res.status(500).json({mensaje: `Ocurrió un error al intentar eliminar la tarea con el id ${id}`});
 }
 }
 
@@ -128,7 +128,7 @@ const updateTaskById = async (req, res) => {
     }
     } catch (error) {
         console.error(error)
-        response.status(500).json( { mensaje: `Ocurrió un error al intentar actualizar los datos de la tarea con el id ${id}` } );
+        res.status(500).json( { mensaje: `Ocurrió un error al intentar actualizar los datos de la tarea con el id ${id}` } );
     }
 }
 

@@ -36,7 +36,7 @@ const getUsers = async (req, res) => {
         res.status(200).json({mensaje: "Se trajeron el listado de usuarios de manera correcta", usuarios:users})
     } catch (error){
         console.error(error)
-        response.status(500).json( { mensaje: 'Ocurrió un error al buscar los usuarios', error: error } );
+        res.status(500).json( { mensaje: 'Ocurrió un error al buscar los usuarios', error: error } );
     }
 }
 
@@ -74,7 +74,7 @@ const createUser = async (req, res) => {
     res.status(200).json({mensaje: 'Usuario nuevo creado exitosamente', usuario_nuevo: newUser})
 } catch (error){
     console.error(error)
-    response.status(500).json( { mensaje: 'Ocurrió un error al crear el usuario', error: {} } );
+    res.status(500).json( { mensaje: 'Ocurrió un error al crear el usuario', error: {} } );
 }
 }
 
@@ -98,7 +98,7 @@ const getUserById = async (req, res) => {
     
 } catch (error) {
     console.error(error)
-    response.status(500).json( { mensaje: `Ocurrió un error al buscar usuario con el id ${id}`, error: {} } );
+    res.status(500).json( { mensaje: `Ocurrió un error al buscar usuario con el id ${id}`, error: {} } );
 }
 }
 
@@ -121,7 +121,7 @@ const deleteUserById = async (req, res) => {
     
 } catch (error) {
     console.error(error)
-    response.status(500).json({mensaje: `Ocurrió un error al intentar eliminar el usuario con el id ${id}`});
+    res.status(500).json({mensaje: `Ocurrió un error al intentar eliminar el usuario con el id ${id}`});
 }
 }
 
@@ -160,7 +160,7 @@ const updateUserById = async (req, res) => {
     }
     } catch (error) {
         console.error(error)
-        response.status(500).json( { mensaje: `Ocurrió un error al intentar actualizar los datos del usuario con el id ${id}` } );
+        res.status(500).json( { mensaje: `Ocurrió un error al intentar actualizar los datos del usuario con el id ${id}` } );
     }
 }
 
@@ -210,7 +210,7 @@ const login = async (req, res) => {
 
     } catch (error) {
         console.error(error)
-        response.status(500).json( { mensaje: `Ocurrió un error `, data: error } );
+        res.status(500).json( { mensaje: `Ocurrió un error `, data: error } );
     }
 }
 
