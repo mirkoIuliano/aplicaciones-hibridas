@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API de Productos</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="shortcut icon" href="images/icono.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <header class="bg-success text-white">
+        <h1>API de Productos</h1>
+        <img src="images/icono.png" alt="icon">
+    </header>
+    
+    <main class="container p-4">
+        <!-- acá tendríamos que colocar todos los endPoints para probar. Esto que sigue es un ejemplo que pone el profe de cómo podría quedar -->
+        <p>Api de productos, usuarios y categorías</p>
+        <h2>endPoints</h2>
+        <ul class="list-group list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <span class="badge text-bg-primary rounded-pill">GET</span>
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">http://127.0.0.1:3000/api/users</div>
+                </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <span class="badge text-bg-primary rounded-pill">GET</span>
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">http://127.0.0.1:3000/api/users/:id</div>
+                </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <span class="badge text-bg-success rounded-pill">POST</span>
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">http://127.0.0.1:3000/api/users</div>
+                </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <span class="badge text-bg-danger rounded-pill">DELETE</span>
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">http://127.0.0.1:3000/api/users/:id</div>
+                </div>
+            </li>
+
+        </ul>
+    </main>
+    <footer class="bg-dark text-white">
+        <p>DV | Aplicaciones Híbridas | 2024</p>
+    </footer>
+</body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</html>
