@@ -55,6 +55,15 @@ const App = () => {
     },
   ];
 
+  // Notas adicionales de Usuarios:
+  const jsonUsuarios = <p className="fw-medium"> &#123; <br/> "name": "Nombre de usuario",  <span class="fw-semibold text-success">// Mínimo 3 caracteres</span> <br/> "email": "test@gmail.com", <span class="fw-semibold text-success">// No se puede poner un email que ya está en uso</span> <br/> "password": "contraseña" <span class="fw-semibold text-success">// Mínimo 8 caracteres</span> <br/> &#125; </p>
+
+  const notasUsuarios = {
+    nombre : "User",
+    parametros : "name, email y password",
+    json : jsonUsuarios
+  }
+
 
   /* Variables para columna *Función* de CRUD de ALUMNOS */
 
@@ -114,7 +123,16 @@ const App = () => {
     },
   ];
 
+  // Notas adicionales de Alumnos:
+  const jsonAlumnos = <p className="fw-medium"> &#123; <br/> "name": "Nombre de alumno",  <span class="fw-semibold text-success">// Mínimo 2 caracteres</span> <br/> "last_name": "Apellido de alumno", <span class="fw-semibold text-success">// Mínimo 2 caracteres </span> <br/> "school_year": 1, <span class="fw-semibold text-success">// Se escribe con número y va del 1 al 6 (primer año a sexto año) </span> <br/> "birthdate": "2000-12-31" <span class="fw-semibold text-success">// El formato es: YYYY-MM-DD</span> <br/> &#125; </p>
 
+  const notasAlumnos = {
+    nombre : "Student",
+    parametros : "name, last_name, school_year y birthdate",
+    json : jsonAlumnos
+  }
+
+  
   /* Variables para columna *Función* de CRUD de MATERIAS */
 
   let subjectGetById = <p className="m-0" >Ver las materias que tiene un alumno <br/> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del alumno</span></p>
@@ -165,22 +183,7 @@ const App = () => {
     
   ];
 
-  const jsonUsuarios = <p className="fw-medium"> &#123; <br/> "name": "Nombre de usuario",  <span class="fw-semibold text-success">// Mínimo 3 caracteres</span> <br/> "email": "test@gmail.com", <span class="fw-semibold text-success">// No se puede poner un email que ya está en uso</span> <br/> "password": "contraseña" <span class="fw-semibold text-success">// Mínimo 8 caracteres</span> <br/> &#125; </p>
-
-  const notasUsuarios = {
-    nombre : "User",
-    parametros : "name, email y password",
-    json : jsonUsuarios
-  }
-
-  const jsonAlumnos = <p className="fw-medium"> &#123; <br/> "name": "Nombre de alumno",  <span class="fw-semibold text-success">// Mínimo 2 caracteres</span> <br/> "last_name": "Apellido de alumno", <span class="fw-semibold text-success">// Mínimo 2 caracteres </span> <br/> "school_year": 1, <span class="fw-semibold text-success">// Se escribe con número y va del 1 al 6 (primer año a sexto año) </span> <br/> "birthdate": "2000-12-31" <span class="fw-semibold text-success">// El formato es: YYYY-MM-DD</span> <br/> &#125; </p>
-
-  const notasAlumnos = {
-    nombre : "Student",
-    parametros : "name, last_name, school_year y birthdate",
-    json : jsonAlumnos
-  }
-
+  // Notas adicionales de Materias:
   const jsonMaterias = <p className="fw-medium"> &#123; <br/> "name": "Nombre de la materia", <br/> "studentId": "670ae395f783cfbf29096fb3" <span class="fw-semibold text-success">// Aquí iría el ID del alumno al cual se está haciendo referencia </span> <br/> &#125; </p>
 
   const notasMaterias = {
@@ -188,6 +191,7 @@ const App = () => {
     parametros : "name y studentId",
     json : jsonMaterias
   }
+
 
   return (
     <div>
