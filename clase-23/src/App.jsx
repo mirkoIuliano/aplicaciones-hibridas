@@ -1,5 +1,7 @@
 import './App.css'
-import Card from './Card';
+import Card from './components/Card'
+import Button from './components/Button';
+import ProductsContainer from './components/ProductsContainer';
 
 import { useState } from 'react';
 
@@ -41,6 +43,7 @@ let [logueado, setLogueado] = useState(false)
 
         {titulo}
         <h3>{mensaje}</h3>
+        <Button text="Hola" color="red"></Button>
         <p>{nombre.toUpperCase()} </p>
 
         <button type='button' onClick={Login}>
@@ -52,6 +55,7 @@ let [logueado, setLogueado] = useState(false)
 
         <hr />
         
+        
 
         {/* EJEMPLO DE USO DE OPERADOR TERNARIO Y RENDERIZADO CONDICIONAL */}
         <> {/* SI EN LAS RESPUESTAS VAMOS A PONER ETIQUETAS HTML TENEMOS QUE ENCERRAR EL OPERADOR TERNARIO DENTRO DE UN DIV O DENTRO DE UN <> </> */}
@@ -59,22 +63,26 @@ let [logueado, setLogueado] = useState(false)
             logueado == true ? (
               <div className='row'>
 
-                {/* EJEMPLO DE RENDERIZADO DE LISTA */}
-                <div className='row'> {/* Este div no es necesario, pero lo ponemos para que queden los producot suno al lado del otro */}
-                  {
-                    productos.map(producto => {
-                      // return <li> {producto.nombre}  | $ {producto.precio} </li>
-                      return <Card key={producto.id} producto={producto.nombre} precio={producto.precio} />
-                    })
-                  }
-                  {/* algo importante sobre el map() es que después del => podemos poner llaves {} o paréntesis ()
-                  La diferencia es que si usamos llaves {} vamos a necesitar poner el return
-                  Y si usamos paréntesis el return no lo necesitamos. Ejemplo con paréntesis:
-                  productos.map(producto => (
-                      <Card key={producto.id} producto={producto.nombre} precio={producto.precio} />
-                      ))
-                  */}
-                </div>
+                <ProductsContainer>
+                  {/* EJEMPLO DE RENDERIZADO DE LISTA */}
+                  <div className='row'> {/* Este div no es necesario, pero lo ponemos para que queden los producot suno al lado del otro */}
+                    {
+                      productos.map(producto => {
+                        // return <li> {producto.nombre}  | $ {producto.precio} </li>
+                        return <Card key={producto.id} producto={producto.nombre} precio={producto.precio} />
+                      })
+                    }
+                    {/* algo importante sobre el map() es que después del => podemos poner llaves {} o paréntesis ()
+                    La diferencia es que si usamos llaves {} vamos a necesitar poner el return
+                    Y si usamos paréntesis el return no lo necesitamos. Ejemplo con paréntesis:
+                    productos.map(producto => (
+                        <Card key={producto.id} producto={producto.nombre} precio={producto.precio} />
+                        ))
+                    */}
+                  </div>
+                </ProductsContainer>
+
+                
 
               </div>
             ) : ( <h4>Iniciar sesión <a href='#' onClick={Login}>Login</a></h4> ) 

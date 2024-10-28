@@ -1,5 +1,5 @@
 import React from "react";
-import './App.css'
+import Button from "./Button";
 
 /* 
 Se puede hacer la función así:
@@ -14,6 +14,7 @@ function Card (props) {
             <h3>{props.producto}</h3>
             <hr />
             <p>${props.precio + 100}</p>
+            <Button text="Agregar" color="green"></Button>
         </div>
     )
 }
