@@ -70,5 +70,6 @@
 }
 
 .bg-blue {
-  background-color: rgb(22, 74, 185);
+  background-color: rgba(22, 74, 185, 0.411);
+  padding: 1rem;
 }

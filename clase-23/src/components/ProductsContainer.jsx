@@ -19,7 +19,6 @@ const ProductsContainer = (props) => {
             <h2>Lista de productos</h2>
             <hr />
             <div className="row">
-                
                 {props.children}
             </div>
             <p> Carrito {count} </p>
