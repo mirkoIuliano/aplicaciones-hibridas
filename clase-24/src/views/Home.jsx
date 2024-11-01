@@ -24,7 +24,7 @@ const Home = () => {
     ];
     let titulo = <h2>App Hibrid</h2>;
 
-    const LogIn = () => {
+    const Login = () => {
         alert("Iniciaste Sesión");
         // modificamos el estado de 'logueado' con la función setLogueado
         setLogueado(true);
@@ -44,7 +44,7 @@ const Home = () => {
             <Button text="Hola" color="red"></Button>
             <p>{nombre.toUpperCase()} </p>
 
-            <button type="button" onClick={LogIn}>
+            <button type="button" onClick={Login}>
                 Iniciar Sesión
             </button>
             <button type="button" onClick={Logout}>
@@ -86,7 +86,7 @@ const Home = () => {
             ) : (
                 <h4>
                     Iniciar sesión{" "}
-                    <a href="#" onClick={LogIn}>
+                    <a href="#" onClick={Login}>
                         Login
                     </a>
                 </h4>
