@@ -2,9 +2,36 @@ import Card from "../components/Card";
 import Button from "../components/Button";
 import ProductsContainer from "../components/ProductsContainer";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Home = () => {
+
+    let [recargar, setRecargar] = useState(false);
+    let [productos, setProductos] = useState([])
+
+    useEffect( () => {
+        const getProducts = async() => {
+            const resp = await fetch('http://dummyjson.com/products')
+            const data = await resp.json()
+            const products = data.products.map(product=>{
+                return{id: product.id, nombre:product.name, foto: product.thumbnail , precio:product.price} 
+            })
+            console.log(products)
+            setProductos(products)
+        } 
+        getProducts()
+    }, [recargar]);  // cuando cambie el estado de 'recargar' se ejecuta
+    /* 
+    EXPLICACIÓN DE useEffect 
+    useEffect( () => {}, []) recibe una función tipo callback y después un array que sería una lista de dependencias
+    yo quiero que se ejecute 'x' función cuando cambia 'x' referencia, es decir, cuando cambie un estado
+    si no ponemos nada en el array se ejecuta solo la primera vez que se renderiza el componente
+    */
+
+    const iniciarRecarga = () => {
+        setRecargar(!recargar) // acá lo que estamos haciendo es poner el valor que tenía antes
+    }
+
     /* 
     EXPLICACIÓN DE useState 
     let estado = useState(false); // Retorna un array que dentro tiene: [ valor del estado, función]
@@ -17,11 +44,11 @@ const Home = () => {
     let mensaje = logueado == true ? "Bienvenido" : "Iniciar sesión";
     let nombre = "mirko";
     let edad = 21;
-    const productos = [
-        { id: 1, nombre: "Mate", precio: 2000 },
-        { id: 2, nombre: "Galletitas", precio: 740 },
-        { id: 3, nombre: "Bizcochitos", precio: 900 },
-    ];
+    // const productos = [
+    //     { id: 1, nombre: "Mate", precio: 2000 },
+    //     { id: 2, nombre: "Galletitas", precio: 740 },
+    //     { id: 3, nombre: "Bizcochitos", precio: 900 },
+    // ];
     let titulo = <h2>App Hibrid</h2>;
 
     const Login = () => {
@@ -51,6 +78,10 @@ const Home = () => {
                 Cerrar Sesión
             </button>
 
+            <button onClick = {iniciarRecarga}>
+                Recargar
+            </button>
+
             <hr />
 
             {/* EJEMPLO DE USO DE OPERADOR TERNARIO Y RENDERIZADO CONDICIONAL */}
@@ -70,6 +101,7 @@ const Home = () => {
                                         producto={producto.nombre}
                                         precio={producto.precio}
                                         id={producto.id}
+                                        foto={producto.foto}
                                     />
                                 );
                             })}

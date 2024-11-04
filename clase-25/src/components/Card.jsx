@@ -14,6 +14,7 @@ function Card(props) {
     <div className="card">
       <h3>{props.producto}</h3>
       <hr />
+      <img src={props.foto} alt="" />
       <p>${props.precio + 100}</p>
       <Button text="Agregar" color="green"></Button>
       <Link to={`/detalles/${props.id}`}>Detalle</Link>
