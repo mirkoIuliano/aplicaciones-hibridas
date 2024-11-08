@@ -7,20 +7,38 @@ import { useState, useEffect } from "react";
 const Home = () => {
 
     let [recargar, setRecargar] = useState(false);
-    let [productos, setProductos] = useState([])
+    let [productos, setProductos] = useState([]);
+
+    {/* este select lo agregó al final de la clase pero sin decir nada pero yo lo copié */}
+    const [categorias, setCategorias] = useState([])
 
     useEffect( () => {
+        
+        {/* este select lo agregó al final de la clase pero sin decir nada pero yo lo copié */}
+        const getCategorias = async () => {
+            const resp  = await fetch('https://dummyjson.com/products/category-list')
+            const data = await resp.json()
+            console.log(data)
+            setCategorias(data)
+        }
+
         const getProducts = async() => {
             const resp = await fetch('http://dummyjson.com/products')
             const data = await resp.json()
-            const products = data.products.map(product=>{
-                return{id: product.id, nombre:product.name, foto: product.thumbnail , precio:product.price} 
+            const products = data.products.map( product => { // hicimos el .map para poder asignarle un nombre a cada uno de los datos recibidos. En nuestro parcial esto no va a hacer falta porque la api la hacemos nosotros y le ponemos el nombre que queremos a las variables
+                return { 
+                    id: product.id, 
+                    nombre:product.name, 
+                    foto: product.thumbnail , 
+                    precio:product.price
+                } 
             })
             console.log(products)
-            setProductos(products)
+            setProductos(products) // con esto hago que la variable productos tenga ahora todo los productos que trajimos de la api
         } 
         getProducts()
-    }, [recargar]);  // cuando cambie el estado de 'recargar' se ejecuta
+        getCategorias()
+    }, [recargar]);  // cuando cambie el estado de 'recargar' se ejecuta le función useEffect
     /* 
     EXPLICACIÓN DE useEffect 
     useEffect( () => {}, []) recibe una función tipo callback y después un array que sería una lista de dependencias
@@ -28,8 +46,9 @@ const Home = () => {
     si no ponemos nada en el array se ejecuta solo la primera vez que se renderiza el componente
     */
 
+    // esta función es la que va a funcionar con el onClick del button Recargar
     const iniciarRecarga = () => {
-        setRecargar(!recargar) // acá lo que estamos haciendo es poner el valor que tenía antes
+        setRecargar(!recargar) // acá lo que estamos haciendo es poner el valor que tenía antes. Esto lo que hace es cambiarle de estado. Esto sirve porque el useEffect se activa cada vez que 'recargar' cacmbia de estado 
     }
 
     /* 
@@ -88,6 +107,19 @@ const Home = () => {
             {/* SI EN LAS RESPUESTAS VAMOS A PONER ETIQUETAS HTML TENEMOS QUE ENCERRAR EL OPERADOR TERNARIO DENTRO DE UN DIV O DENTRO DE UN <> </> */}
             {logueado == true ? (
                 <div className="row">
+                    
+                    {/* este select lo agregó al final de la clase pero sin decir nada pero yo lo copié */}
+                    <select>
+                        {
+                            categorias.map((categoria) => (
+                                <option key={categoria} value={categoria}>
+                                    {categoria}
+                                </option>
+                            ))
+                        }
+                        <option value="">Categoría</option>
+                    </select>
+
                     <ProductsContainer>
                         {/* EJEMPLO DE RENDERIZADO DE LISTA */}
                         <div className="row">
