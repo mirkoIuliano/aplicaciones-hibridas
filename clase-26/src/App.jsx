@@ -9,6 +9,7 @@ import Contact from './views/Contacts';
 import Details from './views/Details';
 import Login from './views/Login';
 import NotFound from './views/NotFound';
+import Registro from './views/Registro';
 
 function App() {
 
@@ -33,6 +34,9 @@ function App() {
             <li>
               <NavLink to="iniciar-sesion">Login</NavLink>
             </li>
+            <li>
+              <NavLink to="registro">Registro</NavLink>
+            </li>
           </ul>
         </nav>
         {/* Este es el área donde se van a mostrar los componentes */}
@@ -42,6 +46,7 @@ function App() {
           <Route path="/detalles/:id" element= { <Details/> } />
           <Route path="/iniciar-sesion" element= { <Login/> } />
           <Route path="*" element= { <NotFound/> } />
+          <Route path="/registro" element= { <Registro/> } />
         </Routes>
 
 
