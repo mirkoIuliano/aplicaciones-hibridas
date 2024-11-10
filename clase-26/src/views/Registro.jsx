@@ -6,19 +6,29 @@ import { useState } from "react"
 const Registro = () => {
 
     // Defino los estados
-    const [ formData, setFormData ] = useState({name:'', email: '', password:''})
+    const [ formData, setFormData ] = useState({name:'', email: '', password:''}) // Inicializamos formData como un objeto con tres propiedades (name, email, password), cada una con un valor inicial vacío (''). Usamos useState para crear este estado y setFormData nos permitirá actualizarlo más adelante cuando el usuario complete el formulario
 
-    // creamos esta función para que no se recargue la pagina cada vez que enviamos el fomrulario 
+
+    // creamos esta función que se va a cativar cada vez que se está cambiando en input, y lo que hace es vincular lo que está en el input con el formData
     const handleChange = (e) => {
-        const {name, value} = e.target // el name este no es de 'nombre', es del ATRIBUTO name
-        // console.log(name, value)
+        const {name, value} = e.target // el name este no es de 'nombre', es del ATRIBUTO name. Con target leemos el valor del input
+        console.log(e.target)
         setFormData({...formData, [name]:value}) 
         // esto lo que dice es que quiero que tenga todo lo anterior (...formData) y algo más --> lo que esté en []
+
+        // con esta función estamos haciendo que el name, email o password que definimos en el useState sea igual al value, osea, igual a lo que el usuairo escribió en el input
+        // si escribo en input email va a aparecerme:  
+        // e.target sería ==> <input type="text" name="email" value="mirko@gmail.com aaaa">
+        // con const {name, vlaue} = e.target estamos haceindo que name sea igual a "email" y value sea igual a "mirko@gmail.com aaaa"
+        // cuando hacemos setFormData({...formData, [name]:value})  sería ==> [email]:"mirko@gmail.com aaaa"
+        // se está modificandno el const [ formData, setFormData ] = useState({name:'', email: '', password:''}) 
+        // emai:'' ahora sería email:"mirko@gmail.com"
     }
+
     
-    // creamos esta función para que no se recargue la pagina cada vez que enviamos el fomrulario 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    // creamos esta función para que no se recargue la pagina cada vez que enviamos el fomrulario  y para enviar los datos del inputa a nuestra API
+    const handleSubmit = async (e) => { // el 'e' sería el evento
+        e.preventDefault() // para que no se recargue la pagina
         try {
             console.log("se envio el formulario")
             console.log(formData)
@@ -33,9 +43,10 @@ const Registro = () => {
                     // acé en el header también habría que enviar la autorización (el JsonWebToken)
                 },
                 method: 'POST',
-                body: JSON.stringify(formData) // hay que convertirlo a String proque los servidores no reciben JSON
-
+                body: JSON.stringify(formData) // hay que convertirlo a String proque los servidores por lo general no reciben JSON
             }
+
+            // hacemos el fetch y le enviamos el endPoint y la configuración
             const response = await fetch(endPoint, config)
 
             if (!response.ok) // si no me está contestando nada entra al if
@@ -48,7 +59,7 @@ const Registro = () => {
             // si está todo bien debería sacar la info por consola
             console.log(data)
 
-            // esto es para que cuando se envíe el fomrulario se resetee el form
+            // esto es para que cuando se envíe el fomrulario se resetee el form y estén todos los campos vacíos
             setFormData({
                 name: '',
                 email: '',

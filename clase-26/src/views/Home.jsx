@@ -9,12 +9,12 @@ const Home = () => {
     let [recargar, setRecargar] = useState(false);
     let [productos, setProductos] = useState([]);
 
-    {/* este select lo agregó al final de la clase pero sin decir nada pero yo lo copié */}
+    {/* este select lo agregó al final de la clase 25 pero sin decir nada pero yo lo copié */}
     const [categorias, setCategorias] = useState([])
 
     useEffect( () => {
         
-        {/* este select lo agregó al final de la clase pero sin decir nada pero yo lo copié */}
+        {/* este select lo agregó al final de la clase 25 pero sin decir nada pero yo lo copié */}
         const getCategorias = async () => {
             const resp  = await fetch('https://dummyjson.com/products/category-list')
             const data = await resp.json()
@@ -56,13 +56,12 @@ const Home = () => {
     let estado = useState(false); // Retorna un array que dentro tiene: [ valor del estado, función]
     let logueado = estado[0]; // En 'logueado' estaríamos guardando el valor del estado
     let setLogueado = estado [1]; // En 'setLogueado' estaríamos guardando la función
-  */
+    */
     // En vez de hacerlo como mostré antes lo desestructurizamos
     let [logueado, setLogueado] = useState(false);
 
     let mensaje = logueado == true ? "Bienvenido" : "Iniciar sesión";
     let nombre = "mirko";
-    let edad = 21;
     // const productos = [
     //     { id: 1, nombre: "Mate", precio: 2000 },
     //     { id: 2, nombre: "Galletitas", precio: 740 },
@@ -81,6 +80,7 @@ const Home = () => {
         // modificamos el estado de 'logueado' con la función setLogueado
         setLogueado(false);
     };
+    
     return (
         <>
             <h2>Inicio</h2>

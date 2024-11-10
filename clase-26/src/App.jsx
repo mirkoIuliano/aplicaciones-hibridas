@@ -19,27 +19,35 @@ function App() {
         <h1 className='verde'> Aplicaciones Híbridas</h1>
         <hr />
 
-        <Link to="login" >Login</Link>
+        {/* <Link to="/iniciar-sesion" >Login</Link> */}
+        {/* Esta es otra firna de crear links. La diferencia con NavLink es que Link no deja poner atributos como active y esas cosas */}
         <nav>
           <ul>
             <li>
-              <NavLink to="/">Inicio</NavLink>
+              <NavLink to="/" className={({ isActive }) => `enlaveNav ${isActive ? "activo" : ""}`}>Inicio</NavLink>
+              {/* 
+              ----- Explicación de isActive ----- 
+              La función recibe un objeto isActive, que indica si el enlace está activo, y devuelve la clase "activo" solo si isActive es true.
+              */}
+            </li>
+            {/* <li>
+              <NavLink to="detalles" className={({ isActive }) => (isActive ? "activo" : "")}>Detalles</NavLink>
+            </li> */}
+            <li>
+              <NavLink to="contacto" className={({ isActive }) => `enlaveNav ${isActive ? "activo" : ""}`}>Contacto</NavLink>
             </li>
             <li>
-              <NavLink to="detalles">Detalles</NavLink>
+              <NavLink to="iniciar-sesion" className={({ isActive }) => `enlaveNav ${isActive ? "activo" : ""}`}>Login</NavLink>
             </li>
             <li>
-              <NavLink to="contacto">Contacto</NavLink>
-            </li>
-            <li>
-              <NavLink to="iniciar-sesion">Login</NavLink>
-            </li>
-            <li>
-              <NavLink to="registro">Registro</NavLink>
+              <NavLink to="registro" className={({ isActive }) => `enlaveNav ${isActive ? "activo" : ""}`}>Registro</NavLink>
             </li>
           </ul>
         </nav>
+        
         {/* Este es el área donde se van a mostrar los componentes */}
+
+        {/* Acá estamos definiendo las rutas */}
         <Routes>
           <Route path="/" element= { <Home/> } />
           <Route path="/contacto" element= { <Contact/> } />

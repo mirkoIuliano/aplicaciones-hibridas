@@ -84,3 +84,24 @@
   display: flex;
   flex-direction: column;
 }
+
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.enlaveNav {
+  color: black;
+}
+.enlaveNav:hover{
+  color: blue;
+}
+
+/* estilos para cuando el link de navLink esté activo */
+.activo {
+  color: red; /* Cambia el color del enlace activo */
+  font-weight: bold; /* Opcional: agrega negrita para resaltar */
+  text-decoration: underline;
+}
