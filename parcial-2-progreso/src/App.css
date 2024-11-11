@@ -1,0 +1,40 @@
+/* NotFound404.css */
+.not-found {
+    text-align: center;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found h1 {
+    font-size: 6rem;
+    color: #ff6347;
+}
+
+.not-found p {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.not-found a {
+    text-decoration: none;
+    color: #ff6347;
+    font-weight: bold;
+}
+
+.not-found a:hover {
+    color: #ff4500;
+}
+
+
+/* Estilos para el navbar */
+
+.enlaveNav:hover {
+    color: black;
+}
+
+/* estilos para cuando el link de navLink esté activo */
+.activo {
+    font-weight: bold;
+}
