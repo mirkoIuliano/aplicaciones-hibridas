@@ -1,18 +1,30 @@
 import React from 'react';
 import NotasAdicionales from './NotasAdicionales';
+import Button from './Button';
+import { useNavigate } from 'react-router-dom';  // Importar useNavigate
 
 const Table = ({ title, rows, notas }) => {
-    console.log(rows);
+    
+    // console.log(rows);
+
+    const navigate = useNavigate();
+
+    const CreateUser = function () {
+        navigate('/crear-usuario')
+    }
+
     return (
         
         <div className="border-bottom border-black pb-3  mb-5">
+
             <h2 className="text-center mb-5">{title}</h2>
             <table className="table table-light table-hover w-100 mb-4">
                 <thead>
                     <tr>
-                        <th className="align-middle text-center" style={{ width: '15%' }}>Método</th>
-                        <th className="align-middle" style={{ width: '50%' }}>Función</th>
+                        <th className="align-middle text-center" style={{ width: '10%' }}>Método</th>
+                        <th className="align-middle" style={{ width: '45%' }}>Función</th>
                         <th className="align-middle" style={{ width: '35%' }}>URL</th>
+                        <th className="align-middle" style={{ width: '15%' }}>Boton</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +35,18 @@ const Table = ({ title, rows, notas }) => {
                         </td>
                         <td className="align-middle">{row.function}</td>
                         <td className="align-middle fw-bold">{row.url}</td>
+
+                        <td className="align-middle">
+                            {console.log(row.button)}
+                             {/* Verificamos que row.button esté definido antes de intentar acceder a sus propiedades */}
+                             {row.button ? (
+                                    <Button text={row.button.text} color={row.button.color} fn={row.button.fn} />
+                                ) : (
+                                    <span>No button</span>  // Si no hay botón, mostramos un texto alternativo
+                                )}
+                            {/* <Button text={row.button.text} color={row.button.color} fn={row.button.fn} /> */}
+                        </td>
+
                     </tr>
                     ))}
                 </tbody>

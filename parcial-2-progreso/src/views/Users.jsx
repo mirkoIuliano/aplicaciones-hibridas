@@ -1,5 +1,5 @@
+import { useNavigate } from 'react-router-dom'
 import Table from '../components/Table'
-import CreateUser from './users/CreateUser'
 
 function Users() {
 
@@ -13,42 +13,82 @@ function Users() {
 
     let userLogin = <p className="m-0">Para iniciar sesión <br /><span className="fw-semibold text-body-secondary">Requiere email y password</span></p>
 
+
+    /* Funciones para el button */
+    // inicialización de useNavigate
+    const navigate = useNavigate();
+
+    // función para llevar a crear usuario
+    const CreateUser = function () {
+        navigate('/crear-usuario')
+    }
+
     const usuarios = [
         {
             method: 'GET',
             methodColor: 'success',
             function: 'Ver todos los usuarios',
-            url: 'http://127.0.0.1:3000/api/usuarios'
+            url: 'http://127.0.0.1:3000/api/usuarios',
+            button: {
+                color: 'success',
+                fn: CreateUser,
+                text: 'Ver'
+            }
         },
         {
             method: 'GET',
             methodColor: 'success',
             function: userGetById,
-            url: 'http://127.0.0.1:3000/api/usuarios/:id'
+            url: 'http://127.0.0.1:3000/api/usuarios/:id',
+            button: {
+                color: 'success',
+                fn: CreateUser,
+                text: 'Ver'
+            }
         },
         {
             method: 'POST',
             methodColor: 'warning',
             function: 'Para crear un usuario',
-            url: 'http://127.0.0.1:3000/api/usuarios'
+            url: 'http://127.0.0.1:3000/api/usuarios',
+            button: {
+                color: 'warning',
+                fn: CreateUser,
+                text: 'Crear'
+            }
         },
         {
             method: 'PUT',
             methodColor: 'primary',
             function: userPut,
-            url: 'http://127.0.0.1:3000/api/usuarios/:id'
+            url: 'http://127.0.0.1:3000/api/usuarios/:id',
+            button: {
+                color: 'primary',
+                fn: CreateUser,
+                text: 'Actualizar'
+            }
         },
         {
             method: 'DELETE',
             methodColor: 'danger',
             function: userDelete,
-            url: 'http://127.0.0.1:3000/api/usuarios/:id'
+            url: 'http://127.0.0.1:3000/api/usuarios/:id',
+            button: {
+                color: 'danger',
+                fn: CreateUser,
+                text: 'Eliminar'
+            }
         },
         {
             method: 'POST',
             methodColor: 'warning',
             function: userLogin,
-            url: 'http://127.0.0.1:3000/api/usuarios/iniciar-sesion'
+            url: 'http://127.0.0.1:3000/api/usuarios/iniciar-sesion',
+            button: {
+                color: 'warning',
+                fn: CreateUser,
+                text: 'Iniciar Sesion'
+            }
         },
     ];
 
@@ -62,10 +102,10 @@ function Users() {
     }
 
     return (
-        
+
         <>
             <Table title="Rutas para usar el CRUD de Usuarios" rows={usuarios} notas={notasUsuarios} />
-            <CreateUser/>
+            {/* <CreateUser/> */}
         </>
 
     );
