@@ -1,4 +1,5 @@
 import Table from '../components/Table'
+import CreateUser from './users/CreateUser'
 
 function Users() {
 
@@ -62,7 +63,10 @@ function Users() {
 
     return (
         
-        <Table title="Rutas para usar el CRUD de Usuarios" rows={usuarios} notas={notasUsuarios} />
+        <>
+            <Table title="Rutas para usar el CRUD de Usuarios" rows={usuarios} notas={notasUsuarios} />
+            <CreateUser/>
+        </>
 
     );
 
