@@ -14,7 +14,7 @@ function Users() {
     let userLogin = <p className="m-0">Para iniciar sesión <br /><span className="fw-semibold text-body-secondary">Requiere email y password</span></p>
 
 
-    /* Funciones para el button */
+    /*---------- Funciones para el button ----------*/
     // inicialización de useNavigate
     const navigate = useNavigate();
 

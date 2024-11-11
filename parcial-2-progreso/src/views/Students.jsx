@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Table from '../components/Table'
 
 function Users() {
@@ -14,49 +15,95 @@ function Users() {
 
     let studentFilter = <div className="m-0" ><h3 className="h4 text-primary-emphasis">Filtro</h3>Filtra por año y muestra todos los alumnos que pertenecen a ese año <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el año de cursada que se desea filtrar (de primer a sexto año)</span></div>
 
+
+    /*---------- Funciones para el button ----------*/
+    // inicialización de useNavigate
+    const navigate = useNavigate();
+
+    // función para llevar a crear alumno
+    const CreateStudent = function () {
+        navigate('/crear-alumno')
+    }
+
     const alumnos = [
         {
             method: 'GET',
             methodColor: 'success',
             function: 'Ver todos los alumnos',
-            url: 'http://127.0.0.1:3000/api/alumnos'
+            url: 'http://127.0.0.1:3000/api/alumnos',
+            button: {
+                color: 'success',
+                fn: CreateStudent,
+                text: 'Ver'
+            }
+            
         },
         {
             method: 'GET',
             methodColor: 'success',
             function: studentGetById,
-            url: 'http://127.0.0.1:3000/api/alumnos/:id'
+            url: 'http://127.0.0.1:3000/api/alumnos/:id',
+            button: {
+                color: 'success',
+                fn: CreateStudent,
+                text: 'Ver'
+            }
         },
         {
             method: 'POST',
             methodColor: 'warning',
             function: 'Para crear un alumno',
-            url: 'http://127.0.0.1:3000/api/alumnos'
+            url: 'http://127.0.0.1:3000/api/alumnos',
+            button: {
+                color: 'warning',
+                fn: CreateStudent,
+                text: 'Crear'
+            }
 
         },
         {
             method: 'PUT',
             methodColor: 'primary',
             function: studentPut,
-            url: 'http://127.0.0.1:3000/api/alumnos/:id'
+            url: 'http://127.0.0.1:3000/api/alumnos/:id',
+            button: {
+                color: 'primary',
+                fn: CreateStudent,
+                text: 'Actualizar'
+            }
         },
         {
             method: 'DELETE',
             methodColor: 'danger',
             function: studentDelete,
-            url: 'http://127.0.0.1:3000/api/alumnos/:id'
+            url: 'http://127.0.0.1:3000/api/alumnos/:id',
+            button: {
+                color: 'danger',
+                fn: CreateStudent,
+                text: 'Eliminar'
+            }
         },
         {
             method: 'GET',
             methodColor: 'success',
             function: studentGetByName,
-            url: 'http://127.0.0.1:3000/api/alumnos/buscar/:name'
+            url: 'http://127.0.0.1:3000/api/alumnos/buscar/:name',
+            button: {
+                color: 'success',
+                fn: CreateStudent,
+                text: 'Ver'
+            }
         },
         {
             method: 'GET',
             methodColor: 'success',
             function: studentFilter,
-            url: 'http://127.0.0.1:3000/api/alumnos/año/:school_year'
+            url: 'http://127.0.0.1:3000/api/alumnos/año/:school_year',
+            button: {
+                color: 'success',
+                fn: CreateStudent,
+                text: 'Filtrar'
+            }
         },
     ];
 

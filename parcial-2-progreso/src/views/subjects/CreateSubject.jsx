@@ -6,7 +6,7 @@ import { useState } from "react"
 const CreateUser = () => {
 
     // Defino los estados
-    const [ formData, setFormData ] = useState({name:'', email: '', password:''}) // Inicializamos formData como un objeto con tres propiedades (name, email, password), cada una con un valor inicial vacío (''). Usamos useState para crear este estado y setFormData nos permitirá actualizarlo más adelante cuando el usuario complete el formulario
+    const [ formData, setFormData ] = useState({name:'', studentId: ''}) // Inicializamos formData como un objeto con tres propiedades (name, email, password), cada una con un valor inicial vacío (''). Usamos useState para crear este estado y setFormData nos permitirá actualizarlo más adelante cuando el usuario complete el formulario
 
 
     // creamos esta función que se va a cativar cada vez que se está cambiando en input, y lo que hace es vincular lo que está en el input con el formData
@@ -34,7 +34,7 @@ const CreateUser = () => {
             console.log(formData)
 
             /*---------- Conectamos a nuestra API ----------*/
-            const endPoint = 'http://127.0.0.1:3000/api/usuarios'
+            const endPoint = 'http://127.0.0.1:3000/api/materias'
             
             const config = {
                 headers: { // en el encabezado tenemos que indicarle qué tipo de datos vamos a enviar
@@ -62,8 +62,7 @@ const CreateUser = () => {
             // esto es para que cuando se envíe el fomrulario se resetee el form y estén todos los campos vacíos
             setFormData({
                 name: '',
-                email: '',
-                password: '',
+                studentId: '',
             })
 
         } catch (error) {
@@ -75,7 +74,7 @@ const CreateUser = () => {
 
     return (
         <div>
-            <h2>Crear Usuario Nuevo</h2>
+            <h2>Crear Materia Nueva</h2>
             <form onSubmit={ handleSubmit } className="card p-4">
                 <div className="divForm">
                     <label htmlFor="name">Nombre</label>
@@ -85,13 +84,8 @@ const CreateUser = () => {
                     React no tiene doble data binding */}
                 </div>
                 <div className="divForm">
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" onChange={handleChange} value={formData.email} />   
-                </div>
-
-                <div className="divForm">
-                    <label htmlFor="password">Conrtaseña</label>
-                    <input type="password" name="password" onChange={handleChange} value={formData.password} />
+                    <label htmlFor="studentId">Id del alumno</label>
+                    <input type="text" name="studentId" onChange={handleChange} value={formData.studentId} />   
                 </div>
 
 

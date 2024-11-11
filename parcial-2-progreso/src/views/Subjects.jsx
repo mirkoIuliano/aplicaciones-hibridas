@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Table from '../components/Table'
 
 function Users() {
@@ -11,42 +12,82 @@ function Users() {
 
     let subjectFilter = <div className="m-0" ><h3 className="h4 text-primary-emphasis">Filtro</h3> Filtra por materia y muestra todos los alumnos que están en esa materia <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro la materia que se desea filtrar (con mayúsculas, minúsuclas y acentos)</span></div>
 
+
+    /*---------- Funciones para el button ----------*/
+    // inicialización de useNavigate
+    const navigate = useNavigate();
+
+    // función para llevar a crear materia
+    const CreateSubject = function () {
+        navigate('/crear-materia')
+    }
+
     const materias = [
         {
             method: 'GET',
             methodColor: 'success',
             function: 'Ver todas las materias',
-            url: 'http://127.0.0.1:3000/api/materias'
+            url: 'http://127.0.0.1:3000/api/materias',
+            button: {
+                color: 'success',
+                fn: CreateSubject,
+                text: 'Ver'
+            }
         },
         {
             method: 'GET',
             methodColor: 'success',
             function: subjectGetById,
-            url: 'http://127.0.0.1:3000/api/materias/:id'
+            url: 'http://127.0.0.1:3000/api/materias/:id',
+            button: {
+                color: 'success',
+                fn: CreateSubject,
+                text: 'Ver'
+            }
         },
         {
             method: 'POST',
             methodColor: 'warning',
             function: 'Para crear una materia',
-            url: 'http://127.0.0.1:3000/api/materias'
+            url: 'http://127.0.0.1:3000/api/materias',
+            button: {
+                color: 'warning',
+                fn: CreateSubject,
+                text: 'Crear'
+            }
         },
         {
             method: 'PUT',
             methodColor: 'primary',
             function: subjectPut,
-            url: 'http://127.0.0.1:3000/api/materias/:id'
+            url: 'http://127.0.0.1:3000/api/materias/:id',
+            button: {
+                color: 'primary',
+                fn: CreateSubject,
+                text: 'Actualizar'
+            }
         },
         {
             method: 'DELETE',
             methodColor: 'danger',
             function: subjectDelete,
-            url: 'http://127.0.0.1:3000/api/materias/:id'
+            url: 'http://127.0.0.1:3000/api/materias/:id',
+            button: {
+                color: 'danger',
+                fn: CreateSubject,
+                text: 'Eliminar'
+            }
         },
         {
             method: 'GET',
             methodColor: 'success',
             function: subjectFilter,
-            url: 'http://127.0.0.1:3000/api/materias/materia/:subject'
+            url: 'http://127.0.0.1:3000/api/materias/materia/:subject',
+            button: {
+                color: 'success',
+                fn: CreateSubject,
+                text: 'Filtrar'
+            }
         },
 
     ];
