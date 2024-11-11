@@ -1,20 +1,13 @@
 import React from 'react';
 import NotasAdicionales from './NotasAdicionales';
 import Button from './Button';
-import { useNavigate } from 'react-router-dom';  // Importar useNavigate
 
 const Table = ({ title, rows, notas }) => {
-    
+
     // console.log(rows);
 
-    const navigate = useNavigate();
-
-    const CreateUser = function () {
-        navigate('/crear-usuario')
-    }
-
     return (
-        
+
         <div className="border-bottom border-black pb-3  mb-5">
 
             <h2 className="text-center mb-5">{title}</h2>
@@ -29,33 +22,33 @@ const Table = ({ title, rows, notas }) => {
                 </thead>
                 <tbody>
                     {rows.map((row, index) => (
-                    <tr key={index}>
-                        <td className={`align-middle text-center fw-bold text-${row.methodColor}`}>
-                        {row.method}
-                        </td>
-                        <td className="align-middle">{row.function}</td>
-                        <td className="align-middle fw-bold">{row.url}</td>
+                        <tr key={index}>
+                            <td className={`align-middle text-center fw-bold text-${row.methodColor}`}>
+                                {row.method}
+                            </td>
+                            <td className="align-middle">{row.function}</td>
+                            <td className="align-middle fw-bold">{row.url}</td>
 
-                        <td className="align-middle">
-                            {console.log(row.button)}
-                             {/* Verificamos que row.button esté definido antes de intentar acceder a sus propiedades */}
-                             {row.button ? (
+                            <td className="align-middle">
+                                {/* {console.log(row.button)} */}
+                                {/* Verificamos que row.button esté definido antes de intentar acceder a sus propiedades */}
+                                {row.button ? (
                                     <Button text={row.button.text} color={row.button.color} fn={row.button.fn} />
                                 ) : (
                                     <span>No button</span>  // Si no hay botón, mostramos un texto alternativo
                                 )}
-                            {/* <Button text={row.button.text} color={row.button.color} fn={row.button.fn} /> */}
-                        </td>
 
-                    </tr>
+                            </td>
+
+                        </tr>
                     ))}
                 </tbody>
             </table>
-            <NotasAdicionales notas={notas}/>
+            <NotasAdicionales notas={notas} />
 
         </div>
-        
-        
+
+
     );
 };
 
