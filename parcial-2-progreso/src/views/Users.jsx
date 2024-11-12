@@ -18,6 +18,11 @@ function Users() {
     // inicialización de useNavigate
     const navigate = useNavigate();
 
+    // función para llevar a la vista de todos los usuarios
+    const AllUsers = function () {
+        navigate('/todos-los-usuarios')
+    }
+
     // función para llevar a crear usuario
     const CreateUser = function () {
         navigate('/crear-usuario')
@@ -31,7 +36,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/usuarios',
             button: {
                 color: 'success',
-                fn: CreateUser,
+                fn: AllUsers,
                 text: 'Ver'
             }
         },
