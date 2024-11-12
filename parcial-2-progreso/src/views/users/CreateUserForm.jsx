@@ -3,7 +3,7 @@
 
 import { useState } from "react"
 
-const CreateUser = () => {
+const CreateUserForm = () => {
 
     // Defino los estados
     const [ formData, setFormData ] = useState({name:'', email: '', password:''}) // Inicializamos formData como un objeto con tres propiedades (name, email, password), cada una con un valor inicial vacío (''). Usamos useState para crear este estado y setFormData nos permitirá actualizarlo más adelante cuando el usuario complete el formulario
@@ -101,4 +101,4 @@ const CreateUser = () => {
     )
 }
 
-export default CreateUser
+export default CreateUserForm

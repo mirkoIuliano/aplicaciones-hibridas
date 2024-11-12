@@ -1,13 +1,14 @@
 import Home from '../views/Home';
 
 import Users from '../views/Users';
-import CreateUser from '../views/users/CreateUser';
+import CreateUserForm from '../views/users/CreateUserForm';
+import AllUsers from '../views/users/AllUsers';
 
 import Students from '../views/Students';
-import CreateStudent from '../views/students/CreateStudent';
+import CreateStudentForm from '../views/students/CreateStudentForm';
 
 import Subjects from '../views/Subjects';
-import CreateSubject from '../views/subjects/CreateSubject';
+import CreateSubjectForm from '../views/subjects/CreateSubjectForm';
 
 import NotFound404 from '../views/NotFound404';
 
@@ -21,17 +22,18 @@ function AppRoutes() {
                 <Route path="/" element= { <Home/> } />
                 {/*---------- rutas de usuarios ----------*/}
                 <Route path="/usuarios" element= { <Users/> } />
-                <Route path="/crear-usuario" element= { <CreateUser/> } />
+                <Route path="/crear-usuario" element= { <CreateUserForm/> } />
+                <Route path="/todos-los-usuarios" element= { <AllUsers/> } />
 
 
                 {/*---------- rutas de alumnos ----------*/}
                 <Route path="/alumnos" element= { <Students/> } />
-                <Route path="/crear-alumno" element= { <CreateStudent/> } />
+                <Route path="/crear-alumno" element= { <CreateStudentForm/> } />
 
 
                 {/*---------- rutas de materias ----------*/}
                 <Route path="/materias" element= { <Subjects/> } />
-                <Route path="/crear-materia" element= { <CreateSubject/> } />
+                <Route path="/crear-materia" element= { <CreateSubjectForm/> } />
 
                 
                 <Route path="*" element= { <NotFound404/> } />
