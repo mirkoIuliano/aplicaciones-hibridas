@@ -1,63 +1,70 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 
-function AllUsers () {
+function AllUsers() {
 
-    const [users, setUsers] = useState([]); // Estado para almacenar la lista de usuarios
-    const [loading, setLoading] = useState(true); // Estado para mostrar indicador de carga
+    const [users, setUsers] = useState([]) // estado para almacenar la lista de usuarios
+    const [loading, setLoading] = useState(true) // estado para mostrar indicador de carga
 
-    // Función para obtener todos los usuarios de la API
+    // función para obtener todos los usuarios
     const fetchUsers = async () => {
         try {
-            const endPoint = 'http://127.0.0.1:3000/api/usuarios';
-            const response = await fetch(endPoint);
-            
+
+            const endPoint = 'http://127.0.0.1:3000/api/usuarios'
+
+            const response = await fetch(endPoint)
+
             if (!response.ok) {
-                console.error("Error al obtener usuarios:", response);
+                console.error("Error al obtener usuarios:", response)
                 return;
             }
 
-            const data = await response.json();
-            setUsers(data.usuarios); // Guardamos los datos en el estado `users`
-            setLoading(false); // Cambiamos el estado de carga a `false`
+            const data = await response.json()
 
-            // esto es para ver la diferencia entre data y data.usuarios. Básicamente hago esto porque cuando hago el fetch me trae un objeto con dos cosas: un objeto mensaje y un objeto usuarios con un Array que dentro tiene objetos, que son los usuarios con sus datos   
+            setUsers(data.usuarios) // guardamos los datos en el estado 'users'
+            setLoading(false) // cambiamos el estado de carga a 'false'
+
+
+            // estos siguientes 2 console.log son para ver la diferencia entre data y data.usuarios. Básicamente hago esto porque cuando hago el fetch me trae un objeto con dos cosas: un objeto mensaje y un objeto usuarios con un Array que dentro tiene objetos, que son los usuarios con sus datos   
             // console.log(data) // data sería el objeto entero con mensaje y usuarios
             // console.log(data.usuarios) // acá estaría entrando específicamente al objeto usuarios de data 
 
         } catch (error) {
-            console.error("Error del servidor:", error);
-            alert('Error al obtener usuarios');
+            console.error("Error del servidor:", error)
+            alert('Error al obtener usuarios')
         }
     };
 
-    // Ejecutamos la función `fetchUsers` cuando el componente se monta
+    // ejecutamos la función 'fetchUsers' cuando el componente se monta
     useEffect(() => {
         fetchUsers();
     }, []);
 
     return (
         <div>
-            <h2>Lista de Usuarios</h2>
-            
-            {loading ? (
-                <p>Cargando usuarios...</p> // Indicador de carga
-            ) : (
-                <ul>
-                    {users.length > 0 ? (
+            <h2>Lista de todos los Usuarios</h2>
+
+            {loading ? ( // si loading es true aparece el mensjae de carga
+                <p>Cargando usuarios...</p>
+            ) : ( // si loading es false aparecen las card
+                <div className="card-container d-flex flex-wrap">
+                    {users.length > 0 ? ( // si users tiene algo entonces imprime las card
                         users.map((user) => (
-                            <li key={user._id}>
-                                <strong>Nombre:</strong> {user.name} <br />
-                                <strong>Email:</strong> {user.email}
-                            </li>
+                            <div className="card" style={{ width: "18rem", margin: "10px" }} key={user._id}>
+                                <div className="card-body">
+                                    <h5 className="card-title">{user.name}</h5>
+                                    <h6 className="card-subtitle mb-2 text-body-secondary">{user.email}</h6>
+                                </div>
+                            </div>
                         ))
-                    ) : (
+                    ) : ( // si users no tiene nada aparece un mensje indicando que no existen usuarios todavía
                         <p>No hay usuarios disponibles.</p>
                     )}
-                </ul>
+                </div>
             )}
         </div>
     );
 
 }
 
-export default AllUsers
+export default AllUsers;
+
