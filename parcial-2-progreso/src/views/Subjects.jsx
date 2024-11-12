@@ -18,6 +18,11 @@ function Users() {
     const navigate = useNavigate();
 
     // función para llevar a crear materia
+    const AllSubjects = function () {
+        navigate('/todas-las-materias')
+    }
+
+    // función para llevar a crear materia
     const CreateSubject = function () {
         navigate('/crear-materia')
     }
@@ -30,7 +35,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/materias',
             button: {
                 color: 'success',
-                fn: CreateSubject,
+                fn: AllSubjects,
                 text: 'Ver'
             }
         },

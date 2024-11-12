@@ -20,11 +20,15 @@ function Users() {
     // inicialización de useNavigate
     const navigate = useNavigate();
 
+    // función para llevar a todos los alumnos
+    const AllStudents = function () {
+        navigate('/todos-los-alumnos')
+    }
+    
     // función para llevar a crear alumno
     const CreateStudent = function () {
         navigate('/crear-alumno')
     }
-
     const alumnos = [
         {
             method: 'GET',
@@ -33,7 +37,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/alumnos',
             button: {
                 color: 'success',
-                fn: CreateStudent,
+                fn: AllStudents,
                 text: 'Ver'
             }
             
