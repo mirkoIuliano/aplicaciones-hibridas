@@ -103,12 +103,12 @@ function Users() {
     ];
 
     // Notas adicionales de Usuarios:
-    const jsonUsuarios = <p className="fw-medium"> &#123; <br /> "name": "Nombre de usuario",  <span className="fw-semibold text-success">// Mínimo 3 caracteres</span> <br /> "email": "test@gmail.com", <span className="fw-semibold text-success">// No se puede poner un email que ya está en uso</span> <br /> "password": "contraseña" <span className="fw-semibold text-success">// Mínimo 8 caracteres</span> <br /> &#125; </p>
+    // const jsonUsuarios = <p className="fw-medium"> &#123; <br /> "name": "Nombre de usuario",  <span className="fw-semibold text-success">// Mínimo 3 caracteres</span> <br /> "email": "test@gmail.com", <span className="fw-semibold text-success">// No se puede poner un email que ya está en uso</span> <br /> "password": "contraseña" <span className="fw-semibold text-success">// Mínimo 8 caracteres</span> <br /> &#125; </p>
 
     const notasUsuarios = {
         nombre: "User",
         parametros: "name, email y password",
-        json: jsonUsuarios
+        json: <p className="fw-medium"> &#123; <br /> "name": "Nombre de usuario",  <span className="fw-semibold text-success">// Mínimo 3 caracteres</span> <br /> "email": "test@gmail.com", <span className="fw-semibold text-success">// No se puede poner un email que ya está en uso</span> <br /> "password": "contraseña" <span className="fw-semibold text-success">// Mínimo 8 caracteres</span> <br /> &#125; </p>
     }
 
     return (
