@@ -54,7 +54,7 @@ function StudentById() {
 
     return (
         <div>
-            <h2>Alumno {student.name}</h2>
+            <h2>{student.name} {student.last_name}</h2>
 
             {loading ? ( // si loading es true aparece el mensjae de carga
                 <p>Cargando alumno...</p>

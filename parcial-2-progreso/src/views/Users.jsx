@@ -3,15 +3,15 @@ import Table from '../components/Table'
 
 function Users() {
 
-    /* Variables para columna *Función* de CRUD de USUARIOS */
+    // /* Variables para columna *Función* de CRUD de USUARIOS */
 
-    let userGetById = <p className="m-0" >Ver un usuario especifico <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea buscar</span></p>
+    // let userGetById = <p className="m-0" >Ver un usuario especifico <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea buscar</span></p>
 
-    let userPut = <p className="m-0">Para modificar un usuario existente <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea modificar</span></p>
+    // let userPut = <p className="m-0">Para modificar un usuario existente <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea modificar</span></p>
 
-    let userDelete = <p className="m-0">Para eliminar un usuario existente <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea borrar</span></p>
+    // let userDelete = <p className="m-0">Para eliminar un usuario existente <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea borrar</span></p>
 
-    let userLogin = <p className="m-0">Para iniciar sesión <br /><span className="fw-semibold text-body-secondary">Requiere email y password</span></p>
+    // let userLogin = <p className="m-0">Para iniciar sesión <br /><span className="fw-semibold text-body-secondary">Requiere email y password</span></p>
 
 
     /*---------- Funciones para el button ----------*/
@@ -21,6 +21,11 @@ function Users() {
     // función para llevar a la vista de todos los usuarios
     const AllUsers = function () {
         navigate('/todos-los-usuarios')
+    }
+    
+    // función para llevar a la vista de todos los usuarios, pero con otra ruta que habilita el botón de Detalle
+    const UsersByID = function () {
+        navigate('/usuarios/detalles')
     }
 
     // función para llevar a crear usuario
@@ -43,11 +48,11 @@ function Users() {
         {
             method: 'GET',
             methodColor: 'success',
-            function: userGetById,
+            function: <p className="m-0" >Ver un usuario especifico <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea buscar</span></p>,
             url: 'http://127.0.0.1:3000/api/usuarios/:id',
             button: {
                 color: 'success',
-                fn: AllUsers,
+                fn: UsersByID,
                 text: 'Ver'
             }
         },
@@ -65,7 +70,7 @@ function Users() {
         {
             method: 'PUT',
             methodColor: 'primary',
-            function: userPut,
+            function: <p className="m-0">Para modificar un usuario existente <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea modificar</span></p>,
             url: 'http://127.0.0.1:3000/api/usuarios/:id',
             button: {
                 color: 'primary',
@@ -76,7 +81,7 @@ function Users() {
         {
             method: 'DELETE',
             methodColor: 'danger',
-            function: userDelete,
+            function: <p className="m-0">Para eliminar un usuario existente <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el id del usuario que se desea borrar</span></p>,
             url: 'http://127.0.0.1:3000/api/usuarios/:id',
             button: {
                 color: 'danger',
@@ -87,7 +92,7 @@ function Users() {
         {
             method: 'POST',
             methodColor: 'warning',
-            function: userLogin,
+            function: <p className="m-0">Para iniciar sesión <br /><span className="fw-semibold text-body-secondary">Requiere email y password</span></p>,
             url: 'http://127.0.0.1:3000/api/usuarios/iniciar-sesion',
             button: {
                 color: 'warning',
@@ -110,7 +115,6 @@ function Users() {
 
         <>
             <Table title="Rutas para usar el CRUD de Usuarios" rows={usuarios} notas={notasUsuarios} />
-            {/* <CreateUser/> */}
         </>
 
     );

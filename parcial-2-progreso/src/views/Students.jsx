@@ -24,6 +24,11 @@ function Users() {
     const AllStudents = function () {
         navigate('/todos-los-alumnos')
     }
+
+    // función para llevar a la vista de todos los alumnos, pero con otra ruta que habilita el botón de Detalle
+    const StudentsByID = function () {
+        navigate('/alumnos/detalles')
+    }
     
     // función para llevar a crear alumno
     const CreateStudent = function () {
@@ -49,7 +54,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/alumnos/:id',
             button: {
                 color: 'success',
-                fn: AllStudents,
+                fn: StudentsByID,
                 text: 'Ver'
             }
         },

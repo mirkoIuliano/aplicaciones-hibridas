@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 function AllUsers() {
 
     const [users, setUsers] = useState([]) // estado para almacenar la lista de usuarios
     const [loading, setLoading] = useState(true) // estado para mostrar indicador de carga
+    const location = useLocation(); // obtener la ubicación actual
 
     // función para obtener todos los usuarios
     const fetchUsers = async () => {
@@ -55,7 +56,14 @@ function AllUsers() {
                                 <div className="card-body">
                                     <h5 className="card-title">{user.name}</h5>
                                     <h6 className="card-subtitle mb-2 text-body-secondary">{user.email}</h6>
-                                    <Link to={`/usuario/${user._id}`}>Detalle</Link>
+
+                                    {/* Mostrar el enlace solo si no estamos en "/usuarios/detalles" */}
+                                    {
+                                        location.pathname === "/usuarios/detalles" ? (
+                                            <Link to={`/usuarios/detalles/${user._id}`}>Detalle</Link>
+                                        ) : ("")
+                                    }
+                                    
                                 </div>
                             </div>
                         ))

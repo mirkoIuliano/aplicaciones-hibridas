@@ -30,7 +30,8 @@ function AppRoutes() {
                 <Route path="/usuarios" element= { <Users/> } />
                 <Route path="/crear-usuario" element= { <CreateUserForm/> } />
                 <Route path="/todos-los-usuarios" element= { <AllUsers/> } />
-                <Route path="/usuario/:id" element= { <UserById/> } />
+                <Route path="/usuarios/detalles" element= { <AllUsers/> } />
+                <Route path="/usuarios/detalles/:id" element= { <UserById/> } />
 
 
 
@@ -38,14 +39,17 @@ function AppRoutes() {
                 <Route path="/alumnos" element= { <Students/> } />
                 <Route path="/crear-alumno" element= { <CreateStudentForm/> } />
                 <Route path="/todos-los-alumnos" element= { <AllStudents/> } />
-                <Route path="/alumno/:id" element= { <StudentById/> } />
+                <Route path="/alumnos/detalles" element= { <AllStudents/> } />
+                <Route path="/alumnos/detalles/:id" element= { <StudentById/> } />
+                
 
 
                 {/*---------- rutas de materias ----------*/}
                 <Route path="/materias" element= { <Subjects/> } />
                 <Route path="/crear-materia" element= { <CreateSubjectForm/> } />
                 <Route path="/todas-las-materias" element= { <AllSubjects/> } />
-                <Route path="/materia/:id" element= { <SubjectById/> } />
+                <Route path="/materias/detalles" element= { <AllSubjects/> } />
+                <Route path="/materias/detalles/:id" element= { <SubjectById/> } />
 
                 
                 <Route path="*" element= { <NotFound404/> } />

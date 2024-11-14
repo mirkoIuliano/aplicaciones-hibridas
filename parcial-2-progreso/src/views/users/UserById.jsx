@@ -47,7 +47,7 @@ function UserById() {
 
     return (
         <div>
-            <h2>Usuario {user.name}</h2>
+            <h2>{user.name}</h2>
 
             {loading ? ( // si loading es true aparece el mensjae de carga
                 <p>Cargando usuario...</p>

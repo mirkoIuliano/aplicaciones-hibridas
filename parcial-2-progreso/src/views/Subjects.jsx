@@ -17,9 +17,14 @@ function Users() {
     // inicialización de useNavigate
     const navigate = useNavigate();
 
-    // función para llevar a crear materia
+    // función para llevar a vista con todas las materias
     const AllSubjects = function () {
         navigate('/todas-las-materias')
+    }
+    
+    // ffunción para llevar a vista con todas las materias, pero con otra ruta que habilita el botón de Detalle
+    const SubjectsById = function () {
+        navigate('/materias/detalles')
     }
 
     // función para llevar a crear materia
@@ -46,7 +51,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/materias/:id',
             button: {
                 color: 'success',
-                fn: AllSubjects,
+                fn: SubjectsById,
                 text: 'Ver'
             }
         },

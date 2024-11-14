@@ -47,7 +47,7 @@ function SubjectById() {
 
     return (
         <div>
-            <h2>Materia {subject.name}</h2>
+            <h2>{subject.name}</h2>
 
             {loading ? ( // si loading es true aparece el mensjae de carga
                 <p>Cargando materia...</p>

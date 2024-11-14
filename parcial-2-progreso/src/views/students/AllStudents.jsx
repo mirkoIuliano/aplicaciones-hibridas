@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function AllStudents() {
 
     const [students, setStudents] = useState([]) // estado para almacenar la lista de alumnos
     const [loading, setLoading] = useState(true) // estado para mostrar indicador de carga
+    const location = useLocation(); // obtener la ubicación actual
 
     // función para obtener todos los alumnos
     const fetchStudents = async () => {
@@ -62,7 +63,13 @@ function AllStudents() {
                                         <h5 className="card-title">{student.name} {student.last_name}</h5>
                                         <h6 className="card-subtitle mb-2 text-body-secondary">Año de cursada: {student.school_year}</h6>
                                         <p>Fecha de nacimiento: {birthdate}</p>
-                                        <Link to={`/alumno/${student._id}`}>Detalle</Link>
+
+                                        {/* Mostrar el enlace solo si estamos en "/alumnos/detalles" */}
+                                        {
+                                            location.pathname === "/alumnos/detalles" ? (
+                                                <Link to={`/alumnos/detalles/${student._id}`}>Detalle</Link>
+                                            ) : ("")
+                                        }
                                     </div>
                                 </div>
                             )
