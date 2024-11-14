@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom";
+import DeleteButton from "../../components/DeleteButton";
 
 
 function AllUsers() {
@@ -42,6 +43,11 @@ function AllUsers() {
         fetchUsers();
     }, []);
 
+    // esta función va a servir para que se refreshee la página después de borrar a un usuario
+    const handleDelete = async () => {
+        await fetchUsers(); // Refresca la lista de usuarios después de borrar
+    };
+
     return (
         <div>
             <h2>Lista de todos los Usuarios</h2>
@@ -63,6 +69,19 @@ function AllUsers() {
                                             <Link to={`/usuarios/detalles/${user._id}`}>Detalle</Link>
                                         ) : ("")
                                     }
+
+                                    {
+                                        location.pathname === "/usuarios/eliminar" ? (
+                                            <DeleteButton 
+                                                endPoint="usuarios" 
+                                                id={user._id} 
+                                                text="Borrar usuario" 
+                                                refresh={fetchUsers} // pasamos esta función como prop para que después de eliminar se refreshee la página
+                                            />
+                                        ) : ("")
+                                    }
+
+                                    
                                     
                                 </div>
                             </div>

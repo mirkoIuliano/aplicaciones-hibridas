@@ -22,7 +22,7 @@ function Subjects() {
         navigate('/todas-las-materias')
     }
     
-    // ffunción para llevar a vista con todas las materias, pero con otra ruta que habilita el botón de Detalle
+    // función para llevar a vista con todas las materias, pero con otra ruta que habilita el botón de Detalle
     const SubjectsById = function () {
         navigate('/materias/detalles')
     }
@@ -30,6 +30,11 @@ function Subjects() {
     // función para llevar a crear materia
     const CreateSubject = function () {
         navigate('/crear-materia')
+    }
+
+    // función para eliminar materia
+    const DeleteSubject = function () {
+        navigate('/materias/eliminar')
     }
 
     const materias = [
@@ -84,7 +89,7 @@ function Subjects() {
             url: 'http://127.0.0.1:3000/api/materias/:id',
             button: {
                 color: 'danger',
-                fn: CreateSubject,
+                fn: DeleteSubject,
                 text: 'Eliminar'
             }
         },

@@ -34,6 +34,12 @@ function Students() {
     const CreateStudent = function () {
         navigate('/crear-alumno')
     }
+
+    // función para eliminar alumno
+    const DeleteStudent = function () {
+        navigate('/alumnos/eliminar')
+    }
+    
     const alumnos = [
         {
             method: 'GET',
@@ -89,7 +95,7 @@ function Students() {
             url: 'http://127.0.0.1:3000/api/alumnos/:id',
             button: {
                 color: 'danger',
-                fn: CreateStudent,
+                fn: DeleteStudent,
                 text: 'Eliminar'
             }
         },

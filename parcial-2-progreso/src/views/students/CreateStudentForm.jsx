@@ -12,7 +12,7 @@ const CreateUser = () => {
     // creamos esta función que se va a cativar cada vez que se está cambiando en input, y lo que hace es vincular lo que está en el input con el formData
     const handleChange = (e) => {
         const {name, value} = e.target // el name este no es de 'nombre', es del ATRIBUTO name. Con target leemos el valor del input
-        console.log(e.target)
+        // console.log(e.target)
         setFormData({...formData, [name]:value}) 
         // esto lo que dice es que quiero que tenga todo lo anterior (...formData) y algo más --> lo que esté en []
 

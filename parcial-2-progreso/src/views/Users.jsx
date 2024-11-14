@@ -33,6 +33,11 @@ function Users() {
         navigate('/crear-usuario')
     }
 
+    // función para eliminar usuario
+    const DeleteUser = function () {
+        navigate('/usuarios/eliminar')
+    }
+
     const usuarios = [
         {
             method: 'GET',
@@ -85,7 +90,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/usuarios/:id',
             button: {
                 color: 'danger',
-                fn: CreateUser,
+                fn: DeleteUser,
                 text: 'Eliminar'
             }
         },

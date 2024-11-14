@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom";
+import DeleteButton from "../../components/DeleteButton";
 
 function AllStudents() {
 
@@ -70,6 +71,18 @@ function AllStudents() {
                                                 <Link to={`/alumnos/detalles/${student._id}`}>Detalle</Link>
                                             ) : ("")
                                         }
+
+                                        {
+                                            location.pathname === "/alumnos/eliminar" ? (
+                                                <DeleteButton
+                                                    endPoint="alumnos" 
+                                                    id={student._id} 
+                                                    text="Borrar alumno" 
+                                                    refresh={fetchStudents} // pasamos esta función como prop para que después de eliminar se refreshee la página
+                                                />
+                                            ) : ("")
+                                        }
+
                                     </div>
                                 </div>
                             )
