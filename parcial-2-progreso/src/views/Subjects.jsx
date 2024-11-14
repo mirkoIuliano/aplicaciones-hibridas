@@ -46,7 +46,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/materias/:id',
             button: {
                 color: 'success',
-                fn: CreateSubject,
+                fn: AllSubjects,
                 text: 'Ver'
             }
         },

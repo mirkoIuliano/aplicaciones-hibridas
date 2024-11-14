@@ -47,7 +47,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/usuarios/:id',
             button: {
                 color: 'success',
-                fn: CreateUser,
+                fn: AllUsers,
                 text: 'Ver'
             }
         },

@@ -49,7 +49,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/alumnos/:id',
             button: {
                 color: 'success',
-                fn: CreateStudent,
+                fn: AllStudents,
                 text: 'Ver'
             }
         },

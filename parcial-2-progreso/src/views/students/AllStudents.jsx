@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 
 function AllStudents() {
 
@@ -61,6 +62,7 @@ function AllStudents() {
                                         <h5 className="card-title">{student.name} {student.last_name}</h5>
                                         <h6 className="card-subtitle mb-2 text-body-secondary">Año de cursada: {student.school_year}</h6>
                                         <p>Fecha de nacimiento: {birthdate}</p>
+                                        <Link to={`/alumno/${student._id}`}>Detalle</Link>
                                     </div>
                                 </div>
                             )

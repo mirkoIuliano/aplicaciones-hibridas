@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 
 function AllSubjects() {
 
@@ -26,7 +27,7 @@ function AllSubjects() {
 
             // estos siguientes 2 console.log son para ver la diferencia entre data y data.materias. Básicamente hago esto porque cuando hago el fetch me trae un objeto con dos cosas: un objeto mensaje y un objeto materias con un Array que dentro tiene objetos, que son los materias con sus datos   
             // console.log(data) // data sería el objeto entero con mensaje y materias
-            // console.log(data.materias) // acá estaría entrando específicamente al objeto materias de data 
+            console.log(data.materias) // acá estaría entrando específicamente al objeto materias de data 
 
         } catch (error) {
             console.error("Error del servidor:", error)
@@ -53,6 +54,7 @@ function AllSubjects() {
                                     <div className="card-body">
                                         <h5 className="card-title">{subject.name} {subject.last_name}</h5>
                                         <h6 className="card-subtitle mb-2 text-body-secondary">ID de alumno asociado: {subject.student}</h6>
+                                        <Link to={`/materia/${subject.student}`}>Detalle</Link>
                                     </div>
                                 </div>
                         ))
