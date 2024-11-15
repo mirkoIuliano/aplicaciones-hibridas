@@ -40,6 +40,11 @@ function Students() {
         navigate('/alumnos/eliminar')
     }
     
+    // función para editar alumno
+    const EditStudent = function () {
+        navigate('/alumnos/editar')
+    }
+
     const alumnos = [
         {
             method: 'GET',
@@ -84,7 +89,7 @@ function Students() {
             url: 'http://127.0.0.1:3000/api/alumnos/:id',
             button: {
                 color: 'primary',
-                fn: CreateStudent,
+                fn: EditStudent,
                 text: 'Actualizar'
             }
         },

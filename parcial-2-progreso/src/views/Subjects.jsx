@@ -31,6 +31,11 @@ function Subjects() {
     const CreateSubject = function () {
         navigate('/crear-materia')
     }
+    
+    // función para llevar a editar materia
+    const EditSubject = function () {
+        navigate('/materias/editar')
+    }
 
     // función para eliminar materia
     const DeleteSubject = function () {
@@ -78,7 +83,7 @@ function Subjects() {
             url: 'http://127.0.0.1:3000/api/materias/:id',
             button: {
                 color: 'primary',
-                fn: CreateSubject,
+                fn: EditSubject,
                 text: 'Actualizar'
             }
         },

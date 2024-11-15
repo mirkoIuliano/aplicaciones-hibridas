@@ -4,6 +4,7 @@ import Users from '../views/Users';
 import CreateUserForm from '../views/users/CreateUserForm';
 import AllUsers from '../views/users/AllUsers';
 import UserById from '../views/users/UserById';
+import EditUserForm from '../views/users/EditUserForm';
 
 import Students from '../views/Students';
 import CreateStudentForm from '../views/students/CreateStudentForm';
@@ -33,6 +34,8 @@ function AppRoutes() {
                 <Route path="/usuarios/detalles" element= { <AllUsers/> } />
                 <Route path="/usuarios/detalles/:id" element= { <UserById/> } />
                 <Route path="/usuarios/eliminar" element= { <AllUsers/> } />
+                <Route path="/usuarios/editar" element= { <AllUsers/> } />
+                <Route path="/usuarios/editar/:id" element= { <EditUserForm/> } />
 
 
 
@@ -43,6 +46,7 @@ function AppRoutes() {
                 <Route path="/alumnos/detalles" element= { <AllStudents/> } />
                 <Route path="/alumnos/detalles/:id" element= { <StudentById/> } />
                 <Route path="/alumnos/eliminar" element= { <AllStudents/> } />
+                <Route path="/alumnos/editar" element= { <AllStudents/> } />
                 
 
 
@@ -53,6 +57,7 @@ function AppRoutes() {
                 <Route path="/materias/detalles" element= { <AllSubjects/> } />
                 <Route path="/materias/detalles/:id" element= { <SubjectById/> } />
                 <Route path="/materias/eliminar" element= { <AllSubjects/> } />
+                <Route path="/materias/editar" element= { <AllSubjects/> } />
 
                 
                 <Route path="*" element= { <NotFound404/> } />

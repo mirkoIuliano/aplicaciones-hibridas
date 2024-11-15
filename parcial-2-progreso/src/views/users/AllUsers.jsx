@@ -77,6 +77,11 @@ function AllUsers() {
                                         ) : ("")
                                     }
 
+                                    {
+                                        location.pathname === "/usuarios/editar" ? (
+                                            <Link to={`/usuarios/editar/${user._id}`}>Editar</Link>
+                                        ) : ("")
+                                    }
                                     
                                     
                                 </div>

@@ -37,6 +37,11 @@ function Users() {
     const DeleteUser = function () {
         navigate('/usuarios/eliminar')
     }
+    
+    // función para editar usuario
+    const EditUser = function () {
+        navigate('/usuarios/editar')
+    }
 
     const usuarios = [
         {
@@ -79,7 +84,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/usuarios/:id',
             button: {
                 color: 'primary',
-                fn: CreateUser,
+                fn: EditUser,
                 text: 'Actualizar'
             }
         },

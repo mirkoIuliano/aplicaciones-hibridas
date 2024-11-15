@@ -9,7 +9,7 @@ function UserById() {
     const [user, setUser] = useState([]) // estado para almacenar la lista de usuarios
     const [loading, setLoading] = useState(true) // estado para mostrar indicador de carga
 
-    // función para obtener todos los usuarios
+    // función para obtener al usuario por id
     const fetchUserById = async (id) => {
         try {
 
