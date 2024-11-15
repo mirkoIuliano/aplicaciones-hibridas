@@ -1,5 +1,4 @@
 // este archivo sirve para hacer el fomrulario para editar un alumno
-
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
@@ -37,9 +36,14 @@ const EditStudentForm = () => {
             setStudent(data.alumno)
 
             // Convertimos la fecha de nacimiento en un formato legible
-            const birthdate = new Date(data.alumno.birthdate).toISOString().split('T')[0]; // Convierte la fecha a UTC
+            // const birthdate = new Date(data.alumno.birthdate).toISOString().split('T')[0]; // Convierte la fecha a UTC
+            // const birthdate = formatoDate(data.alumno.birthdate);
+            const birthdate = new Date(data.alumno.birthdate);
+            const localDate = new Date(birthdate.getTime() - birthdate.getTimezoneOffset() * 60000)
+            .toISOString()
+            .split('T')[0];
 
-            setFormData({ name: data.alumno.name, last_name: data.alumno.last_name, school_year: data.alumno.school_year, birthdate: birthdate })
+            setFormData({ name: data.alumno.name, last_name: data.alumno.last_name, school_year: data.alumno.school_year, birthdate: localDate })
             setLoading(false)
 
         } catch (error) {
