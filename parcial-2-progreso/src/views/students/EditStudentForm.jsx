@@ -37,7 +37,7 @@ const EditStudentForm = () => {
             setStudent(data.alumno)
 
             // Convertimos la fecha de nacimiento en un formato legible
-            const birthdate = new Date(data.alumno.birthdate).toISOString().split('T')[0];
+            const birthdate = new Date(data.alumno.birthdate).toISOString().split('T')[0]; // Convierte la fecha a UTC
 
             setFormData({ name: data.alumno.name, last_name: data.alumno.last_name, school_year: data.alumno.school_year, birthdate: birthdate })
             setLoading(false)

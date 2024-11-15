@@ -53,11 +53,12 @@ function AllStudents() {
                     {students.length > 0 ? ( // si students tiene algo entonces imprime las card
                         students.map((student) => {
                             // Convertimos la fecha de nacimiento en un formato legible
-                            const birthdate = new Date(student.birthdate).toLocaleDateString('es-AR', {
-                                day: '2-digit',
-                                month: '2-digit',
-                                year: 'numeric'
-                            })
+                            // const birthdate = new Date(student.birthdate).toLocaleDateString('es-AR', {
+                            //     day: '2-digit',
+                            //     month: '2-digit',
+                            //     year: 'numeric'
+                            // });
+                            const birthdate = new Date(student.birthdate).toISOString().split('T')[0];
                             return (
                                 <div className="card" style={{ width: "18rem", margin: "10px" }} key={student._id}>
                                     <div className="card-body">
