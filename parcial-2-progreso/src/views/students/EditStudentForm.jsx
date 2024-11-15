@@ -1,55 +1,59 @@
-// este archivo sirve para hacer el fomrulario para editar un usuario
+// este archivo sirve para hacer el fomrulario para editar un alumno
 
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { useParams } from "react-router-dom";
 
-const EditUserForm = () => {
+const EditStudentForm = () => {
 
     // inicialización de useNavigate
     const navigate = useNavigate();
 
     // tomamos el id que viene por url
-    const { id } = useParams(); 
+    const { id } = useParams();
 
-    const [user, setUser] = useState([]) // estado para almacenar la lista de usuarios
+    const [student, setStudent] = useState([]) // estado para almacenar la lista de alumnos
     const [loading, setLoading] = useState(true) // estado para mostrar indicador de carga
 
     // Defino los estados
-    const [formData, setFormData] = useState({ name: '', email: '', password: '' }) // Inicializamos formData como un objeto con tres propiedades (name, email, password), cada una con un valor inicial vacío (''). Usamos useState para crear este estado y setFormData nos permitirá actualizarlo más adelante cuando el usuario complete el formulario
+    const [formData, setFormData] = useState({ name: '', last_name: '', school_year: '', birthdate: '' })
 
     // función para obtener al usuario por id
-    const fetchUserById = async (id) => {
+    const fetchStudentById = async (id) => {
         try {
 
-            const endPoint = `http://127.0.0.1:3000/api/usuarios/${id}`
+            const endPoint = `http://127.0.0.1:3000/api/alumnos/${id}`
 
             const response = await fetch(endPoint)
 
             if (!response.ok) {
-                console.error("Error al obtener usuario:", response)
+                console.error("Error al obtener alumno:", response)
                 return;
             }
             const data = await response.json()
 
             console.log(data)
 
-            setUser(data.usuario)
-            setFormData({name: data.usuario.name, email: data.usuario.email, password: data.usuario.password})
+            setStudent(data.alumno)
+
+            // Convertimos la fecha de nacimiento en un formato legible
+            const birthdate = new Date(data.alumno.birthdate).toISOString().split('T')[0];
+
+            setFormData({ name: data.alumno.name, last_name: data.alumno.last_name, school_year: data.alumno.school_year, birthdate: birthdate })
             setLoading(false)
 
         } catch (error) {
             console.error("Error del servidor:", error)
-            alert(`Error al obtener usuario con id: ${id}`)
+            alert(`Error al obtener alumno con id: ${id}`)
         }
     };
 
     // ejecutamos la función 'fetchUserById' cuando el componente se monta
     useEffect(() => {
-        fetchUserById(id);
+        fetchStudentById(id);
     }, []);
 
-    
+
 
 
     // creamos esta función que se va a cativar cada vez que se está cambiando en input, y lo que hace es vincular lo que está en el input con el formData
@@ -58,18 +62,9 @@ const EditUserForm = () => {
         // console.log(e.target)
         setFormData({ ...formData, [name]: value })
         // esto lo que dice es que quiero que tenga todo lo anterior (...formData) y algo más --> lo que esté en []
-
-        // con esta función estamos haciendo que el name, email o password que definimos en el useState sea igual al value, osea, igual a lo que el usuairo escribió en el input
-        // si escribo en input email va a aparecerme:  
-        // e.target sería ==> <input type="text" name="email" value="mirko@gmail.com aaaa">
-        // con const {name, vlaue} = e.target estamos haceindo que name sea igual a "email" y value sea igual a "mirko@gmail.com aaaa"
-        // cuando hacemos setFormData({...formData, [name]:value})  sería ==> [email]:"mirko@gmail.com aaaa"
-        // se está modificandno el const [ formData, setFormData ] = useState({name:'', email: '', password:''}) 
-        // emai:'' ahora sería email:"mirko@gmail.com"
     }
 
-
-    // creamos esta función para que no se recargue la pagina cada vez que enviamos el fomrulario  y para enviar los datos del inputa a nuestra API
+    // creamos esta función para que no se recargue la pagina cada vez que enviamos el fomrulario  y para enviar los datos del input a nuestra API
     const handleSubmit = async (e) => { // el 'e' sería el evento
         e.preventDefault() // para que no se recargue la pagina
         try {
@@ -77,7 +72,7 @@ const EditUserForm = () => {
             console.log(formData)
 
             /*---------- Conectamos a nuestra API ----------*/
-            const endPoint = `http://127.0.0.1:3000/api/usuarios/${id}`
+            const endPoint = `http://127.0.0.1:3000/api/alumnos/${id}`
 
 
             const config = {
@@ -110,8 +105,7 @@ const EditUserForm = () => {
             //     password: '',
             // })
 
-
-            navigate('/usuarios/editar')
+            navigate('/alumnos/editar')
 
         } catch (error) {
             console.log(error)
@@ -122,34 +116,38 @@ const EditUserForm = () => {
 
     return (
         <div>
-            <h2>Editar Usuario</h2>
+            <h2>Editar Alumno</h2>
             {loading ? ( // si loading es true aparece el mensjae de carga
                 <p>Cargando usuario...</p>
             ) : (
-            <form onSubmit={handleSubmit} className="card p-4">
-                <div className="divForm">
-                    <label htmlFor="name">Nombre</label>
-                    <input className="" type="text" name="name" onChange={handleChange} value={formData.name} />
-                    {/* con value={} vinculamos el input al formData */}
-                    {/* esto no funciona como en Vue que si cambiamos uno cambia el otro. Si ponemos arriba en el useStatte sí va a estar impactando en el value={} del input, pero para que el value={} del input afecte al useState necesitamos agregalre un evento
+                <form onSubmit={handleSubmit} className="card p-4">
+                    <div className="divForm">
+                        <label htmlFor="name">Nombre</label>
+                        <input className="" type="text" name="name" onChange={handleChange} value={formData.name} />
+                        {/* con value={} vinculamos el input al formData */}
+                        {/* esto no funciona como en Vue que si cambiamos uno cambia el otro. Si ponemos arriba en el useStatte sí va a estar impactando en el value={} del input, pero para que el value={} del input afecte al useState necesitamos agregalre un evento
                     React no tiene doble data binding */}
-                </div>
-                <div className="divForm">
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" onChange={handleChange} value={formData.email} />
-                </div>
+                    </div>
+                    <div className="divForm">
+                        <label htmlFor="last_name">Apellido</label>
+                        <input type="text" name="last_name" onChange={handleChange} value={formData.last_name} />
+                    </div>
 
-                <div className="divForm">
-                    <label htmlFor="password">Conrtaseña</label>
-                    <input type="password" name="password" onChange={handleChange} value={formData.password} />
-                </div>
+                    <div className="divForm">
+                        <label htmlFor="school_year">Año de Cursada</label>
+                        <input type="number" name="school_year" onChange={handleChange} value={formData.school_year} />
+                    </div>
 
+                    <div className="divForm">
+                        <label htmlFor="birthdate">Fecha de nacimiento</label>
+                        <input type="date" name="birthdate" onChange={handleChange} value={formData.birthdate} />
+                    </div>
 
-                <button type="submit">Editar</button>
-            </form>
+                    <button type="submit">Editar</button>
+                </form>
             )}
         </div>
     )
 }
 
-export default EditUserForm
+export default EditStudentForm

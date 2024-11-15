@@ -52,32 +52,38 @@ function AllSubjects() {
                 <div className="card-container d-flex flex-wrap">
                     {subjects.length > 0 ? ( // si subjects tiene algo entonces imprime las card
                         subjects.map((subject) => (
-                                <div className="card" style={{ width: "18rem", margin: "10px" }} key={subject._id}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">{subject.name} {subject.last_name}</h5>
-                                        <h6 className="card-subtitle mb-2 text-body-secondary">ID de alumno asociado: {subject.student}</h6>
+                            <div className="card" style={{ width: "18rem", margin: "10px" }} key={subject._id}>
+                                <div className="card-body">
+                                    <h5 className="card-title">{subject.name} {subject.last_name}</h5>
+                                    <h6 className="card-subtitle mb-2 text-body-secondary">ID de alumno asociado: {subject.student}</h6>
 
-                                        {
-                                            location.pathname === "/materias/detalles" ? (
-                                                <Link to={`/materias/detalles/${subject.student}`}>Detalle</Link>
-                                            ) : ("")
-                                        }
+                                    {
+                                        location.pathname === "/materias/detalles" ? (
+                                            <Link to={`/materias/detalles/${subject.student}`}>Detalle</Link>
+                                        ) : ("")
+                                    }
 
-                                        {
-                                            location.pathname === "/materias/eliminar" ? (
-                                                <DeleteButton 
-                                                    endPoint="materias" 
-                                                    id={subject._id} 
-                                                    text="Borrar materia" 
-                                                    refresh={fetchSubjects} // pasamos esta función como prop para que después de eliminar se refreshee la página
-                                                />
-                                            ) : ("")
-                                        }
+                                    {
+                                        location.pathname === "/materias/eliminar" ? (
+                                            <DeleteButton
+                                                endPoint="materias"
+                                                id={subject._id}
+                                                text="Borrar materia"
+                                                refresh={fetchSubjects} // pasamos esta función como prop para que después de eliminar se refreshee la página
+                                            />
+                                        ) : ("")
+                                    }
 
-                                        
-                                        
-                                    </div>
+                                    {
+                                        location.pathname === "/materias/editar" ? (
+                                            <Link to={`/materias/editar/${subject.student}`}>Editar</Link>
+                                        ) : ("")
+                                    }
+
+
+
                                 </div>
+                            </div>
                         ))
                     ) : ( // si subjects no tiene nada aparece un mensaje indicando que no existen materias todavía
                         <p>No hay materias disponibles.</p>

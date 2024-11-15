@@ -75,11 +75,17 @@ function AllStudents() {
                                         {
                                             location.pathname === "/alumnos/eliminar" ? (
                                                 <DeleteButton
-                                                    endPoint="alumnos" 
-                                                    id={student._id} 
-                                                    text="Borrar alumno" 
+                                                    endPoint="alumnos"
+                                                    id={student._id}
+                                                    text="Borrar alumno"
                                                     refresh={fetchStudents} // pasamos esta función como prop para que después de eliminar se refreshee la página
                                                 />
+                                            ) : ("")
+                                        }
+
+                                        {
+                                            location.pathname === "/alumnos/editar" ? (
+                                                <Link to={`/alumnos/editar/${student._id}`}>Editar</Link>
                                             ) : ("")
                                         }
 
