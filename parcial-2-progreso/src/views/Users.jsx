@@ -42,7 +42,12 @@ function Users() {
     const EditUser = function () {
         navigate('/usuarios/editar')
     }
-
+    
+    // función para editar usuario
+    const LoginUser = function () {
+        navigate('/usuarios/iniciar-sesion')
+    }
+    
     const usuarios = [
         {
             method: 'GET',
@@ -106,7 +111,7 @@ function Users() {
             url: 'http://127.0.0.1:3000/api/usuarios/iniciar-sesion',
             button: {
                 color: 'warning',
-                fn: CreateUser,
+                fn: LoginUser,
                 text: 'Iniciar Sesion'
             }
         },

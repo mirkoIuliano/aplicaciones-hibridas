@@ -5,6 +5,7 @@ import CreateUserForm from '../views/users/CreateUserForm';
 import AllUsers from '../views/users/AllUsers';
 import UserById from '../views/users/UserById';
 import EditUserForm from '../views/users/EditUserForm';
+import LoginForm from '../views/users/LoginForm';
 
 import Students from '../views/Students';
 import CreateStudentForm from '../views/students/CreateStudentForm';
@@ -38,6 +39,7 @@ function AppRoutes() {
                 <Route path="/usuarios/eliminar" element= { <AllUsers/> } />
                 <Route path="/usuarios/editar" element= { <AllUsers/> } />
                 <Route path="/usuarios/editar/:id" element= { <EditUserForm/> } />
+                <Route path="/usuarios/iniciar-sesion" element= { <LoginForm/> } />
 
 
 
