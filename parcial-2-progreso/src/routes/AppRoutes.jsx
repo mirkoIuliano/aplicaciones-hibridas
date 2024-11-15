@@ -16,6 +16,7 @@ import Subjects from '../views/Subjects';
 import CreateSubjectForm from '../views/subjects/CreateSubjectForm';
 import AllSubjects from '../views/subjects/AllSubjects';
 import SubjectById from '../views/subjects/SubjectById';
+import EditSubjectForm from '../views/subjects/EditSubjectForm';
 
 import NotFound404 from '../views/NotFound404';
 
@@ -60,6 +61,7 @@ function AppRoutes() {
                 <Route path="/materias/detalles/:id" element= { <SubjectById/> } />
                 <Route path="/materias/eliminar" element= { <AllSubjects/> } />
                 <Route path="/materias/editar" element= { <AllSubjects/> } />
+                <Route path="/materias/editar/:id" element= { <EditSubjectForm/> } />
 
                 
                 <Route path="*" element= { <NotFound404/> } />
