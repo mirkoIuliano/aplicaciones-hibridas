@@ -43,10 +43,6 @@ function AllUsers() {
         fetchUsers();
     }, []);
 
-    // esta función va a servir para que se refreshee la página después de borrar a un usuario
-    const handleDelete = async () => {
-        await fetchUsers(); // Refresca la lista de usuarios después de borrar
-    };
 
     return (
         <div>
