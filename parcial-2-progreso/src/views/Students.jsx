@@ -44,6 +44,11 @@ function Students() {
     const EditStudent = function () {
         navigate('/alumnos/editar')
     }
+    
+    // función para editar alumno
+    const SearchByName = function () {
+        navigate('/alumnos/buscar-por-nombre')
+    }
 
     const alumnos = [
         {
@@ -111,7 +116,7 @@ function Students() {
             url: 'http://127.0.0.1:3000/api/alumnos/buscar/:name',
             button: {
                 color: 'success',
-                fn: CreateStudent,
+                fn: SearchByName,
                 text: 'Ver'
             }
         },

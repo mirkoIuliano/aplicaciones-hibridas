@@ -12,6 +12,7 @@ import CreateStudentForm from '../views/students/CreateStudentForm';
 import AllStudents from '../views/students/AllStudents';
 import StudentById from '../views/students/StudentById';
 import EditStudentForm from '../views/students/EditStudentForm';
+import SerachByName from '../views/students/SerachByName';
 
 import Subjects from '../views/Subjects';
 import CreateSubjectForm from '../views/subjects/CreateSubjectForm';
@@ -52,6 +53,7 @@ function AppRoutes() {
                 <Route path="/alumnos/eliminar" element= { <AllStudents/> } />
                 <Route path="/alumnos/editar" element= { <AllStudents/> } />
                 <Route path="/alumnos/editar/:id" element= { <EditStudentForm/> } />
+                <Route path="/alumnos/buscar-por-nombre" element= { <SerachByName/> } />
                 
 
 
