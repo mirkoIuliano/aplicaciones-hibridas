@@ -41,7 +41,12 @@ function Subjects() {
     const DeleteSubject = function () {
         navigate('/materias/eliminar')
     }
-
+    
+    // función para eliminar materia
+    const FilterSubjectByStudent = function () {
+        navigate('/materias/filtrar-por-alumno')
+    }
+    
     const materias = [
         {
             method: 'GET',
@@ -105,7 +110,7 @@ function Subjects() {
             url: 'http://127.0.0.1:3000/api/materias/materia/:subject',
             button: {
                 color: 'success',
-                fn: CreateSubject,
+                fn: FilterSubjectByStudent,
                 text: 'Filtrar'
             }
         },

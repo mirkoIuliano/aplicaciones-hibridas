@@ -1,4 +1,5 @@
 import Home from '../views/Home';
+import NotReleasedYet from '../views/NotReleasedYet';
 
 import Users from '../views/Users';
 import CreateUserForm from '../views/users/CreateUserForm';
@@ -19,6 +20,7 @@ import CreateSubjectForm from '../views/subjects/CreateSubjectForm';
 import AllSubjects from '../views/subjects/AllSubjects';
 import SubjectById from '../views/subjects/SubjectById';
 import EditSubjectForm from '../views/subjects/EditSubjectForm';
+import SubjectFilter from '../views/subjects/SubjectFilter';
 
 import NotFound404 from '../views/NotFound404';
 
@@ -54,6 +56,7 @@ function AppRoutes() {
                 <Route path="/alumnos/editar" element= { <AllStudents/> } />
                 <Route path="/alumnos/editar/:id" element= { <EditStudentForm/> } />
                 <Route path="/alumnos/buscar-por-nombre" element= { <SerachByName/> } />
+                <Route path="/alumnos/en-progreso" element= { <NotReleasedYet/> } />
                 
 
 
@@ -66,6 +69,7 @@ function AppRoutes() {
                 <Route path="/materias/eliminar" element= { <AllSubjects/> } />
                 <Route path="/materias/editar" element= { <AllSubjects/> } />
                 <Route path="/materias/editar/:id" element= { <EditSubjectForm/> } />
+                <Route path="/materias/filtrar-por-alumno" element= { <SubjectFilter/> } />
 
                 
                 <Route path="*" element= { <NotFound404/> } />

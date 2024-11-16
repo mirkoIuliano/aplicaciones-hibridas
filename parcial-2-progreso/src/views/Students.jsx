@@ -49,6 +49,11 @@ function Students() {
     const SearchByName = function () {
         navigate('/alumnos/buscar-por-nombre')
     }
+    
+    // función para editar alumno
+    const StudentFilter = function () {
+        navigate('/alumnos/en-progreso')
+    }
 
     const alumnos = [
         {
@@ -123,11 +128,11 @@ function Students() {
         {
             method: 'GET',
             methodColor: 'success',
-            function: <><h3 className="h4 text-primary-emphasis">Filtro</h3>Filtra por año y muestra todos los alumnos que pertenecen a ese año <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el año de cursada que se desea filtrar (de primer a sexto año)</span></>,
+            function: <><h3 className="h4 text-primary-emphasis">Filtro <span className='h6'>(No funciona el botón filtrar)</span></h3>Filtra por año y muestra todos los alumnos que pertenecen a ese año <br /> <span className="fw-semibold text-body-secondary">Es necesario poner como parámetro el año de cursada que se desea filtrar (de primer a sexto año)</span></>,
             url: 'http://127.0.0.1:3000/api/alumnos/año/:school_year',
             button: {
                 color: 'success',
-                fn: CreateStudent,
+                fn: StudentFilter,
                 text: 'Filtrar'
             }
         },
